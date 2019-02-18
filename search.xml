@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[mytest]]></title>
+    <url>%2F2019%2F02%2F18%2Fmytest%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[test]]></title>
-    <url>%2F2019%2F02%2F18%2Ftest%2F</url>
+    <url>%2F2019%2F02%2F18%2Fte1st%2F</url>
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
