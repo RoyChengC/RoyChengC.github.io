@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="软件设计与体系结构,复习提纲,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Roy Cheng的博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="第一章  面向对象设计 面向对象设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、合成复用原则、迪米特法则 单个类关注：抽象、封装、信息隐藏；多个合作类关注：松耦合、开闭、里氏、依赖倒置、契约式设计 可读性（封装、抽象、信息隐藏、关注点分离、单一职责）、正确性（LSP、契约式设计）、可扩展性（接口隔离、松耦合、LSP、开闭、依赖倒置） 开闭原则是面向对象设计的核心，带来可重用性和可维护">
+<meta name="keywords" content="软件设计与体系结构,复习提纲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件设计与体系结构复习提纲">
+<meta property="og:url" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/index.html">
+<meta property="og:site_name" content="Roy Cheng的博客">
+<meta property="og:description" content="第一章  面向对象设计 面向对象设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、合成复用原则、迪米特法则 单个类关注：抽象、封装、信息隐藏；多个合作类关注：松耦合、开闭、里氏、依赖倒置、契约式设计 可读性（封装、抽象、信息隐藏、关注点分离、单一职责）、正确性（LSP、契约式设计）、可扩展性（接口隔离、松耦合、LSP、开闭、依赖倒置） 开闭原则是面向对象设计的核心，带来可重用性和可维护">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546242138485.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546242835883.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546243948459.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546244492212.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546245415295.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546245432569.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546246010076.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546246036250.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546269669813.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546271975084.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546272327907.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546351352576.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546352422392.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546353275527.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546354512858.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546355481651.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546356198128.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546357428930.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546396289122.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546399275372.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546399343466.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546407224595.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546409101234.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546412650874.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546416641783.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546419888616.png">
+<meta property="og:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546420165126.png">
+<meta property="og:updated_time" content="2019-02-18T13:32:59.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件设计与体系结构复习提纲">
+<meta name="twitter:description" content="第一章  面向对象设计 面向对象设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、合成复用原则、迪米特法则 单个类关注：抽象、封装、信息隐藏；多个合作类关注：松耦合、开闭、里氏、依赖倒置、契约式设计 可读性（封装、抽象、信息隐藏、关注点分离、单一职责）、正确性（LSP、契约式设计）、可扩展性（接口隔离、松耦合、LSP、开闭、依赖倒置） 开闭原则是面向对象设计的核心，带来可重用性和可维护">
+<meta name="twitter:image" content="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users/Administrator/AppData/Roaming/Typora/typora-user-images/1546242138485.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/">
+
+
+
+
+
+  <title>软件设计与体系结构复习提纲 | Roy Cheng的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    
+    <a href="https://github.com/RoyChengC/RoyChengC.github.io" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Roy Cheng的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Roy Cheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Roy Cheng的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">软件设计与体系结构复习提纲</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-18T21:10:30+08:00">
+                2019-02-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/软件工程/" itemprop="url" rel="index">
+                    <span itemprop="name">软件工程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/02/18/软件设计与体系结构复习提纲/" class="leancloud_visitors" data-flag-title="软件设计与体系结构复习提纲">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  17
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第一章-面向对象设计"><a href="#第一章-面向对象设计" class="headerlink" title="第一章  面向对象设计"></a><strong>第一章  面向对象设计</strong></h2><ol>
+<li>面向对象设计原则：单一职责原则、开闭原则、里氏代换原则、依赖倒转原则、合成复用原则、迪米特法则</li>
+<li>单个类关注：抽象、封装、信息隐藏；多个合作类关注：松耦合、开闭、里氏、依赖倒置、契约式设计</li>
+<li>可读性（封装、抽象、信息隐藏、关注点分离、单一职责）、正确性（LSP、契约式设计）、可扩展性（接口隔离、松耦合、LSP、开闭、依赖倒置）</li>
+<li>开闭原则是面向对象设计的核心，带来可重用性和可维护性，关键是抽象</li>
+<li>里氏替换原则，与继承相关；若能用基类，则能用子类</li>
+<li>依赖倒置原则：高层模块不应该依赖低层模块，应该依赖抽象；可以创建可重用框架；针对接口编程而不是针对实现编程</li>
+<li>接口隔离原则：处理胖接口（接口不内聚），避免接口污染（为借口添加了不必要的职责），将大接口细化成小接口</li>
+<li>单一职责原则：关注点分离，实现高内聚低耦合，一个类应该有且仅有一个职责</li>
+<li>契约式设计</li>
+</ol>
+<hr>
+<h2 id="第二章-软件架构"><a href="#第二章-软件架构" class="headerlink" title="第二章  软件架构"></a><strong>第二章  软件架构</strong></h2><ol>
+<li>软件架构涉及设计模式和架构模式</li>
+<li>架构降低复杂度，规定系统的结构和实施流程</li>
+<li>系统架构包括：分解成组件、分配组件、组件的相互作用、架构的静态和动态的功能</li>
+<li>系统架构可以包含多个架构模式</li>
+<li>架构模式可以包含多个设计模式</li>
+<li>系统分为多种类型：硬实时系统、软实时系统、非实时系统</li>
+<li>系统中的分析任务：明确系统的目的和主要任务、应用流程、接口</li>
+<li>系统中的结构设计任务：整体硬件架构</li>
+<li>软件架构的原型：水平原型、垂直原型、可行性原型</li>
+</ol>
+<hr>
+<h2 id="第三章-软件设计的模式"><a href="#第三章-软件设计的模式" class="headerlink" title="第三章  软件设计的模式"></a><strong>第三章  软件设计的模式</strong></h2><ol>
+<li>模式促进软件开发的发展，模式是一个抽象类或接口的符号</li>
+<li>模式的主要目标：提高架构的灵活性和可扩展性</li>
+<li>模式提高了系统的扩展性、降低了系统的性能、增加了架构的复杂度</li>
+<li>设计模式描述的是细致的模式，架构模式是粗略的模式</li>
+<li>架构模式描述软件系统里的基本的结构组织或纲要</li>
+</ol>
+<hr>
+<h2 id="第四章-设计模式–结构型模式"><a href="#第四章-设计模式–结构型模式" class="headerlink" title="第四章  设计模式–结构型模式"></a><strong>第四章  设计模式–结构型模式</strong></h2><ol>
+<li><p>设计模式：描述复杂软件系统中普遍存在，重复出现的结构、模式、套路，用来解决在一定的场景下，具有一般性的设计问题</p>
+</li>
+<li><p>模式的核心思想：增加抽象层，分离出变化部分</p>
+</li>
+<li><p>设计模式分类（按目的）：创建型、结构型、行为型</p>
+</li>
+<li><p>设计模式分类（按范围）：类模式、对象模式</p>
+</li>
+<li><p>设计模式解决设计问题：寻找合适的对象、决定对象的粒度、指定对象的接口、描述对象的实现、运用复用机制、运行时刻和编译时刻的结构、设计应支持变化</p>
+</li>
+<li><p>结构型模式：如何将类或对象结合在一起形成更大的结构，可分为类结构型模式（类之间的静态继承）和对象结构型模式（对象在运行时可以发生变化）</p>
+</li>
+<li><blockquote>
+<p><strong>适配器模式</strong>：将一个类的接口转换成客户期望的另一个接口</p>
+<p><strong>类适配器</strong>：用一个具体的adapter类对adaptee和target进行匹配，adapter类多重继承adaptee和target类</p>
+<p><strong>对象适配器</strong>：允许一个Adapter与多个Adaptee同时工作，即Adaptee本身以及它的所有子类（如果有子类的话）同时工作。Adapter可以一次给所有的Adaptee添加功能</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546242138485.png" alt="1546242138485"></p>
+<blockquote>
+<p><strong>效果</strong>：适配器模式将目标类和适配者类解耦，增加了类的透明性和复用性，灵活性和扩展性好。</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>桥梁模式</strong>（对象结构型模式）：将抽象部分与实现部分分离，使它可以独立的变化</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546242835883.png" alt="1546242835883"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>桥梁模式分离接口和实现部分，提高可扩充性；</li>
+<li>实现细节对用户透明；</li>
+<li>将强关联改成弱关联；</li>
+<li>继承关系是强关联，聚合关系是弱关联</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>装饰模式</strong>（对象结构型模式）：以对客户透明的方式动态给对象添加额外职责，不是通过继承，而是通过组合实现</p>
+</blockquote>
+<blockquote>
+<p><strong>注意</strong>：装饰模式应该遵循里氏代换原则，装饰类必须覆写所有继承的方法</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546243948459.png" alt="1546243948459"></p>
+<blockquote>
+<p><strong>效果</strong>：比静态继承更加灵活，避免在层次结构高层的类有太多的特征</p>
+</blockquote>
+<blockquote>
+<p><strong>装饰模式 vs 适配器模式</strong>：</p>
+<ul>
+<li>装饰模式增强功能，不改变接口；</li>
+<li>适配器模式改变接口，不改变功能</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>外观模式</strong>（对象结构型模式）：设计原则为迪米特法则；提供了一个统一的接口，用来访问子系统中的一群接口；定义一个高层接口，使子系统更加容易使用</p>
+</blockquote>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>减少客户端的对象数目；</li>
+<li>实现了子系统和客户之间松耦合；</li>
+<li>不限制客户应用子系统类；</li>
+<li>子系统中类的功能收到外观的限制</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546244492212.png" alt="1546244492212"></p>
+</li>
+<li><blockquote>
+<p><strong>组合模式</strong>（对象结构型模式）：把对象归集成一个树形结构，若是简单的没有组合的基本单位就是叶对象，若节点互相聚集在一起就是组合对象；在组合模式下，树形结构中的节点在工作时无论是单一的还是组合的都会同样处理；通过Component接口操纵组合部件的对象</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546245415295.png" alt="1546245415295"></p>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546245432569.png" alt="1546245432569"></p>
+<blockquote>
+<p><strong>效果</strong>：简化客户代码，一致使用组合对象和单个对象；容易增加新类型的组件；</p>
+</blockquote>
+<blockquote>
+<p><strong>注意，与装饰模式的对比</strong>：</p>
+<ul>
+<li>一定程度上，装饰模式是组合模式的一个特例；</li>
+<li>装饰对象只能聚集一个对象，动态构建功能；</li>
+<li>组合模式把对象组装为一个层次结构</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>代理模式</strong>（对象结构型模式）：为其他对象提供一种代理以控制对这个对象的访问，用代理来替代被访问的实体</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546246010076.png" alt="1546246010076"></p>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546246036250.png" alt="1546246036250"></p>
+<blockquote>
+<p><strong>类似的模式</strong>：代理模式、装饰模式、适配器模式</p>
+<p><strong>区别</strong>：</p>
+<ul>
+<li>代理使用实际对象相同接口，适配器转换了接口</li>
+<li>装饰模式为了动态添加功能，代理模式也可以</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>*享元模式</strong>（对象结构型模式）：运用共享技术有效地支持大量细粒度的对象，避免大量拥有相同内容的小类的开销，使大家共享一个对象</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="第四章-设计模式–行为模式"><a href="#第四章-设计模式–行为模式" class="headerlink" title="第四章  设计模式–行为模式"></a><strong>第四章  设计模式–行为模式</strong></h2><ol>
+<li><p>行为模式是对不同对象之间划分责任和算法的抽象化，它不仅描述类和对象的结构，而且重点关注它们之间的交互和通信</p>
+</li>
+<li><p>行为型模式分为类行为型模式和对象行为型模式</p>
+<ul>
+<li>类行为型模式使用<strong>继承机制</strong>在类之间分派行为，通过<strong>多态</strong>等方式分配父类和子类的职责</li>
+<li>对象行为型模式使用<strong>对象复合</strong>而不是继承分配行为，通过<strong>对象关联</strong>等方式来分配多个类的职责</li>
+<li>合成复用原则</li>
+</ul>
+</li>
+<li><blockquote>
+<p><strong>模板方法模式</strong>（类行为型模式）：</p>
+<ul>
+<li>实现父类和子类对象之间职责的划分；</li>
+<li>使用继承机制使得父类和子类之间达到分工合作的目的；</li>
+<li>基类中确定算法框架，子类实现具体工作；</li>
+<li>子类不需要改变算法结构即可重定义算法的某些步骤；</li>
+<li>将相同的代码放在父类中，不同的方法放在不同的子类中</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>效果</strong>：模板方法是一种代码复用技术，导致一种反向的控制结构（依赖倒置原则）</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>命令模式</strong>（对象行为型模式）：将请求封装成对象，用不同请求对客户参数化；请求发送者和请求接收者解耦</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546269669813.png" alt="1546269669813"></p>
+<blockquote>
+<p><strong>效果</strong>：命令可以被扩展，满足ocp原则</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>观察者模式</strong>（对象行为型模式）：</p>
+<ul>
+<li>定义对象间的一种一对多的依赖关系；</li>
+<li>当一个对象的状态发生改变时，所有依赖它的对象都得到通知并被自动更新</li>
+<li>一个对象可以被多个观察者观察，即被观察者和观察者是一对多关系</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546271975084.png" alt="1546271975084"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>目标和观察者之间松耦合，可以各自独立改变；</li>
+<li>允许独立改变目标和观察者；</li>
+<li>高内聚低耦合；</li>
+<li>一个目标被大量订阅，广播通知时会有效率问题</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546272327907.png" alt="1546272327907"></p>
+</li>
+<li><blockquote>
+<p><strong>策略模式</strong>（对象行为型模式）：定义一系列算法，并进行封装，使其可以相互替换；根据环境条件的不同，选择不同的策略来完成该项任务</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546351352576.png" alt="1546351352576"></p>
+<p>strategy类层次为context定义了一系列可供重用的算法，环境类依赖接口，不依赖具体实现</p>
+<blockquote>
+<p><strong>策略模式 vs 装饰模式、模板方法模式</strong>：</p>
+<ul>
+<li>策略模式实现相同功能，更换策略不改变总体功能；</li>
+<li>装饰模式动态增加功能</li>
+<li>模板方法父类静态定义算法基本框架，子类只允许改变算法中的步骤</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>中介者模式</strong>（对象行为型模式）：用一个中介对象来封装一系列的对象交互；中介者使各对象不需要显式的相互引用，从而使其耦合松散，而且可以独立改变他们之间的交互；<strong>为了减少对象两两之间复杂的引用关系</strong></p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546352422392.png" alt="1546352422392"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>减少了子类生成；各个同事松耦合；</li>
+<li>简化了对象间关联；</li>
+<li>控制集中化；</li>
+<li>中介者难复用</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>状态模式</strong>（对象行为型模式）：允许一个对象在其内部状态改变时改变他的行为；一个对象与外部事件交互，内部状态改变，其行为也随之变化</p>
+</blockquote>
+<blockquote>
+<p><strong>适用性</strong>：对象行为取决于其状态；一个操作中含有庞大的多分支条件语句</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546353275527.png" alt="1546353275527"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>使用状态模式，动作完成后可以自动切换到下一个状态，客户无需知道具体切换逻辑。每个ConcreteState实例只需要知道本状态后可能过渡到哪些状态及相应条件；</li>
+<li>实现了与状态相关的行为的局部化；</li>
+<li>使用状态模式将状态的切换逻辑放到state的派生类中，动作的实现供派生类进行调用，实现逻辑和动作的解耦</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>访问者模式</strong>（对象行为型模式）：</p>
+<ul>
+<li>表示一个作用于某个对象结构中的各元素的操作；</li>
+<li>可在不改变这些对象本身的情况下，定义作用于这些对象的新操作；</li>
+<li>封装一些施加于某种数据结构元素之上的操作</li>
+<li>为不同类型的元素提供了多种访问操作方式，且可以在不修改原有系统的情况下增加新的操作方式</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546354512858.png" alt="1546354512858"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>不改变具体元素类，就可以增加新操作，主要是通过元素类的accept方法接受一个visitor对象来实现的</li>
+<li>不易频繁增加元素类，每增加一个元素类，就要在visitor接口中写一个针对该元素的方法，还要修改visitor子类</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>迭代器模式</strong>（对象行为型模式）：提供一种可顺序访问聚合对象中各个元素的方法，但不暴露该对象内部表示；提供外部对象使用的迭代器，对聚合访问和遍历</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546355481651.png" alt="1546355481651"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>支持以不同的方式遍历一个集合；</li>
+<li>迭代器简化了聚集的接口；</li>
+<li>在同一个聚集上可以有多个遍历；</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>职责链模式</strong>（对象行为型模式）：</p>
+<ul>
+<li>避免请求的发送者和接收者之间的耦合关系；</li>
+<li>多个对象都有机会处理一个请求；</li>
+<li>对象连成一条链，沿链传递该请求，直到有对象处理</li>
+<li>客户无需关心请求的处理细节和请求的传递，只需将请求发送到链上即可</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546356198128.png" alt="1546356198128"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>降低耦合度；</li>
+<li>增强了给对象分配职责的灵活性；</li>
+<li>不保证被接受</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="第四章-设计模式–创建型模式"><a href="#第四章-设计模式–创建型模式" class="headerlink" title="第四章  设计模式–创建型模式"></a><strong>第四章  设计模式–创建型模式</strong></h2><ol>
+<li><p>创建型模式关注的是对象的创建，将创建对象的过程进行抽象；</p>
+<p>作为客户程序仅仅需要去使用对象，而不再关心创建对象过程中的逻辑</p>
+</li>
+<li><p>工厂模式：专门负责实例化有共同父类（接口）的类的实例；工厂模式可以动态决定实例化哪一个子类对象，不必事先知道要实例化哪个类</p>
+</li>
+<li><blockquote>
+<p><strong>简单工厂模式</strong>：</p>
+<ul>
+<li>在该模式中可以根据参数的不同返回不同类的实例；</li>
+<li>专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546357428930.png" alt="1546357428930"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>将对象的创建和对象本身业务处理分离可以降低系统的耦合度；</li>
+<li>工厂类的职责过重，增加新的产品要修改工厂类的判断逻辑；</li>
+<li>当你需要什么，只需要传入一个正确的参数就可以获取你想要的对象，而无需知道创建细节</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>总结</strong>：</p>
+<ul>
+<li>将具体的对象生成，移植到服务端代码的一个对象生成工厂中；</li>
+<li>当有需求要增加新的子类对象时，客户端的代码不再需要修改，只需修改服务端代码</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>工厂模式</strong>：</p>
+<ul>
+<li>解决了简单工厂模式违反开闭原则问题，增加工厂类的动态性；</li>
+<li>定义一个用户创建对象的接口，让子类决定实例化哪一个类；</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546396289122.png" alt="1546396289122"></p>
+<blockquote>
+<p><strong>效果</strong>：为子类提供挂钩；连接平行的类层次</p>
+</blockquote>
+<blockquote>
+<p><strong>总结</strong>：</p>
+<ul>
+<li>工厂模式中，核心的工厂类不再负责所有产品的创建，而是将具体的创建工作交给子类去做；</li>
+<li>增加新产品类时无需修改现有系统，并封装了产品对象的创建细节，系统具有良好的灵活性和可扩展性；</li>
+<li>增加新产品时需要增加新的工厂，导致系统类的个数成对增加，一定程度上增加了系统的复杂性</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>抽象工厂模式</strong>：</p>
+<ul>
+<li>提供一个创建一系列相关或相互依赖对象的接口，而无需指定它们具体的类；</li>
+<li>应用于系统独立于其产品创建、组合和表示时；</li>
+<li>当系统提供的工厂所需生产的具体产品并不是一个简单的对象，而是多个位于不同产品等级结构中属于不同类型的产品时</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546399275372.png" alt="1546399275372"></p>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546399343466.png" alt="1546399343466"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>隔离了具体类的生成，使得客户并不需要知道什么被创建，更换一个具体工厂就变得相对容易；</li>
+<li>改变具体工厂的实例，就可以在某种程度上改变软件系统的行为；</li>
+<li>高内聚低耦合</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>单例模式</strong>（对象创建型模式）：保证一个类仅有一个实例，提供一个全局访问点</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546407224595.png" alt="1546407224595"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>严格控制客户怎样及何时访问它；</li>
+<li>对全局变量的一种改进，避免污染名空间；</li>
+<li>允许对操作和表示的精化</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>生成器模式</strong>（对象创建型模式）：</p>
+<ul>
+<li>逐步构造对象，使得对象的创建更具弹性；</li>
+<li>将一个包含多个组件对象的创建分成若干个步骤，并将这些步骤封装在Builder接口中</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546409101234.png" alt="1546409101234"></p>
+<blockquote>
+<p><strong>效果</strong>：</p>
+<ul>
+<li>使产品的内部表象可以独立变化；</li>
+<li>每一个builder相对独立，与其他builder无关；</li>
+<li>可对构造过程更加精细控制；</li>
+<li>将构建代码和表示代码分开</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<hr>
+<h2 id="第五章-架构模式"><a href="#第五章-架构模式" class="headerlink" title="第五章  架构模式"></a><strong>第五章  架构模式</strong></h2><ol>
+<li><p>多视图方法是软件架构归档的方法，更是指导我们进行架构设计的思维方法</p>
+</li>
+<li><p>软件架构视图：对于从某一视角或某一点上看到的系统所做的简化描述，描述中涵盖了系统的某一特定方面，而省略了于此方面无关的实体 </p>
+</li>
+<li><p>4+1视图：<img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546412650874.png" alt="1546412650874"></p>
+</li>
+<li><blockquote>
+<p>逻辑架构：关注功能，着重考虑功能需求</p>
+<p>开发架构：关注程序包，着重考虑开发期质量属性</p>
+<p>运行架构：关注进程、线程、对象等运行时概念及相关的并发同步通信等问题，着重考虑运行期质量属性</p>
+<p>物理架构：关注软件系统最终如何安装或部署到物理机器</p>
+<p>数据架构：关注持久化数据的存储方案</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>逻辑视图：关注用户可见的功能，还包括为实现用户功能而必须提供的辅助功能模块</p>
+<p>开发视图：关注程序包，不仅包括编写的源程序，还有可以直接使用的第三方SDK和现成框架、类库、中间件</p>
+<p>运行视图：关注运行时单元的交互问题</p>
+<p>物理视图：重视目标程序的静态位置问题</p>
+<p>场景视图：可理解性</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>分层架构模式</strong>：</p>
+<ul>
+<li>系统将划分为一个层次结构；</li>
+<li>各层之间的关系是<strong>客户/服务器</strong>；</li>
+<li>每一层都具有<strong>高度内聚性</strong>；</li>
+<li>有助于将复杂系统划分成独立模块；</li>
+<li>每层都向上层提供服务，同时又利用了下层的逻辑功能</li>
+<li>上层通过下层提供的接口来使用下层的功能</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>优点</strong>：减少依赖程度、支持扩展、支持重用</p>
+<p><strong>缺点</strong>：层次划分不易、不一定能够层次化、系统性能下降、难以调试</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>管道过滤器架构模式</strong>：</p>
+<ul>
+<li>过滤器读取数据，加工转换，变成输出数据；</li>
+<li>过滤器间通过管道连接；</li>
+<li>每个过滤器是独立的实体；</li>
+<li>管道传输和缓存数据</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>优点</strong>：简单性；重用性；系统易维护和扩展；并发性</p>
+<p><strong>缺点</strong>：过滤器对输入数据批量转换；不适合设计交互式应用系统；兼容性弱；降低系统效率</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>插件架构模式</strong>：扩展点用接口表示，插件用于实现这些接口并安装；应用在没有添加扩展时也能正常使用</p>
+</blockquote>
+<blockquote>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>每个插件有自己的职责范围；</li>
+<li>便于第三方扩展；</li>
+<li>保持系统的精简；</li>
+<li>支持多版本同时运行；</li>
+<li>插件的独立测试</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>初始过程消耗高；</li>
+<li>执行过程中管理开销不断提高；</li>
+<li>插件和接口有依赖关系</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>中介模式</strong>（分布式系统架构模式）：服务器组件提供一个或多个服务；客户组件需要服务器组件的一个或多个服务</p>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546416641783.png" alt="1546416641783"></p>
+<blockquote>
+<p><strong>优点</strong>：客户无需知道服务器的物理地址；通过服务器的逻辑名称实现了隐藏</p>
+<p><strong>缺点</strong>：容错性差；间接调用增加了调用的通信开销；中介可能形成拼接</p>
+</blockquote>
+<blockquote>
+<p><strong>对比</strong>：</p>
+<ul>
+<li>中介者模式同事通过mediator通信，处在同一系统。发送和接受1：n关系；</li>
+<li>中介模式负责分布式系统中确定接受组件位置，发送和接受1：1</li>
+</ul>
+</blockquote>
+</li>
+<li><blockquote>
+<p><strong>SOA架构模式</strong>：</p>
+<ul>
+<li><p>把一个业务流程直接构建为一个计算机系统；</p>
+</li>
+<li><p>应用场景被分配给设计的组件，易于修改；</p>
+</li>
+<li>一个应用场景的目标就是实现一个服务；</li>
+<li>一个业务流程会使用这个服务</li>
+</ul>
+</blockquote>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546419888616.png" alt="1546419888616"></p>
+<p><img src="//roychengc.github.io/2019/02/18/软件设计与体系结构复习提纲/Users\Administrator\AppData\Roaming\Typora\typora-user-images\1546420165126.png" alt="1546420165126"></p>
+</li>
+</ol>
+<blockquote>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>根据业务流程构成服务组件；</li>
+<li>分解服务组件和基本服务组件，减小系统复杂性；</li>
+<li>可复用；</li>
+<li>接口不变，服务的实现可动态转换</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>过于细分服务组成复杂的结构；</li>
+<li>多个层次通信增加额外开销</li>
+</ul>
+</blockquote>
+<ol start="11">
+<li></li>
+<li><blockquote>
+<p><strong>MVC模式</strong>：</p>
+<ul>
+<li>模型（核心功能）封装系统数据和对数据的加工；</li>
+<li>视图把数据展示给用户，含有模型要展示的数据；</li>
+<li>控制器负责接收用户的输入，对输入的内容进行解释</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>优点</strong>：</p>
+<ul>
+<li>模型类和用户界面分别设计；</li>
+<li>修改界面无需更改模型；模型单独测试；</li>
+<li>同一应用设计不同用户界面</li>
+</ul>
+<p><strong>缺点</strong>：</p>
+<ul>
+<li>经常更新影响系统性能；</li>
+<li>细分多个类增加实现开销</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/软件设计与体系结构/" rel="tag"># 软件设计与体系结构</a>
+          
+            <a href="/tags/复习提纲/" rel="tag"># 复习提纲</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/18/test/" rel="prev" title="test">
+                test <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80MjY5My8xOTI0MA"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Roy Cheng</p>
+              <p class="site-description motion-element" itemprop="description">雪沉乌木斜阳下</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/RoyChengC" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          <div id="music163player">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="330" height="450" src="//music.163.com/outchain/player?type=0&id=2604457264&auto=1&height=430"></iframe>
+          </div>
+    
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章-面向对象设计"><span class="nav-number">1.</span> <span class="nav-text">第一章  面向对象设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二章-软件架构"><span class="nav-number">2.</span> <span class="nav-text">第二章  软件架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三章-软件设计的模式"><span class="nav-number">3.</span> <span class="nav-text">第三章  软件设计的模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-设计模式–结构型模式"><span class="nav-number">4.</span> <span class="nav-text">第四章  设计模式–结构型模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-设计模式–行为模式"><span class="nav-number">5.</span> <span class="nav-text">第四章  设计模式–行为模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四章-设计模式–创建型模式"><span class="nav-number">6.</span> <span class="nav-text">第四章  设计模式–创建型模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五章-架构模式"><span class="nav-number">7.</span> <span class="nav-text">第五章  架构模式</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Roy Cheng</span>
+
+<!--
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">5.2k</span>
+  
+</div>
+ 
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">| <i class="fa fa-area-chart"></i> 博客全站共5.2k字</span>
+</div>
+
+        
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=66177591";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+        
+      </div>
+    </div></footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("MJm97Ijl5o2QDPYXjjadskJr-gzGzoHsz", "RHkmkvFL3DlMqj2W8TjaKP5q");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
