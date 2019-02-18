@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Roy Cheng的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://roychengc.github.io/"/>
+  <updated>2019-02-17T11:45:04.085Z</updated>
+  <id>https://roychengc.github.io/</id>
+  
+  <author>
+    <name>Roy Cheng</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mypost</title>
+    <link href="https://roychengc.github.io/2019/02/12/mypost/"/>
+    <id>https://roychengc.github.io/2019/02/12/mypost/</id>
+    <published>2019-02-12T04:01:43.000Z</published>
+    <updated>2019-02-17T11:45:04.085Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Diary" scheme="https://roychengc.github.io/categories/Diary/"/>
+    
+    
+      <category term="PS3" scheme="https://roychengc.github.io/tags/PS3/"/>
+    
+      <category term="Games" scheme="https://roychengc.github.io/tags/Games/"/>
+    
+  </entry>
+  
+</feed>
