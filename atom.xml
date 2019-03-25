@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-02-19T03:40:57.197Z</updated>
+  <updated>2019-03-25T13:03:32.158Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode-23 Merge K Sorted Lists</title>
+    <link href="https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/"/>
+    <id>https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/</id>
+    <published>2019-03-24T15:32:16.000Z</published>
+    <updated>2019-03-25T13:03:32.158Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a></h4><p>Merge <em>k</em> sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p><p>合并k个有序链表，返回一个排好序的链表。</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure><p><strong>思路：</strong></p><p>把k个链表中的元素一一取出，并将它们放入一个vector中，之后对vector进行排序。最后将排序好的vector转化成链表即可。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line">        <span class="keyword">int</span> n = lists.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            ListNode* node = lists[i];</span><br><span class="line">            <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                vec.push_back(node-&gt;val);</span><br><span class="line">                node = node-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(vec.begin(), vec.end());</span><br><span class="line">        <span class="function">ListNode <span class="title">head</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        ListNode* result = &amp;head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)vec.size(); ++i) &#123;</span><br><span class="line">            ListNode* temp = <span class="keyword">new</span> ListNode(vec[i]);</span><br><span class="line">            result-&gt;next = temp;</span><br><span class="line">            result = result-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>进阶：</strong></p><p>以下出自<a href="http://www.cnblogs.com/grandyang/p/4606710.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4606710.html</a></p><p>之前有一道合并两个有序链表链表的题目（<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. Merge Two Sorted Lists</a>），我们同样可以通过两两合并来解决这道问题，但是这样做时间复杂度太高。</p><p>我们可以通过最小堆解决这个问题。首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素再加入堆中，下次仍从堆中取出最小的元素做相同的操作，以此类推，直到堆中没有元素了，此时k个链表也合并为了一个链表，返回首节点即可。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> cmp = [](ListNode*&amp; a, ListNode*&amp; b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;;</span><br><span class="line">        priority_queue&lt;ListNode*, <span class="built_in">vector</span>&lt;ListNode*&gt;, <span class="keyword">decltype</span>(cmp) &gt; q(cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> node : lists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node) q.push(node);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> ListNode(<span class="number">-1</span>), *cur = dummy;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> t = q.top(); q.pop();</span><br><span class="line">            cur-&gt;next = t;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;next) q.push(cur-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;23-Merge-k-Sorted-Lists&quot;&gt;&lt;a href=&quot;#23-Merge-k-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;23. Merge k Sorted Lists&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https:/
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="链表" scheme="https://roychengc.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="排序" scheme="https://roychengc.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="堆" scheme="https://roychengc.github.io/tags/%E5%A0%86/"/>
+    
+  </entry>
   
   <entry>
     <title>软件构造复习提纲</title>
