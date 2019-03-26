@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-03-25T13:03:32.158Z</updated>
+  <updated>2019-03-26T15:00:06.622Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 24 Swap Nodes in Pairs</title>
+    <link href="https://roychengc.github.io/2019/03/26/leetcode-24-Swap-Nodes-in-Pairs/"/>
+    <id>https://roychengc.github.io/2019/03/26/leetcode-24-Swap-Nodes-in-Pairs/</id>
+    <published>2019-03-26T14:02:52.000Z</published>
+    <updated>2019-03-26T15:00:06.622Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="24. Swap Nodes in Pairs"></a><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">24. Swap Nodes in Pairs</a></h4><p>Given a linked list, swap every two adjacent nodes and return its head.</p><p>You may <strong>not</strong> modify the values in the list’s nodes, only nodes itself may be changed.</p><p>给你一个链表，交换每两个相邻的节点（两个节点一对，一对一对交换）。</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</span><br></pre></td></tr></table></figure><p><strong>思路</strong>：</p><p>就是普通的交换两个节点，但是要注意一对节点中的第二个节点与下一对节点的第一个节点的连接关系。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* res = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">        ListNode* cur = res;</span><br><span class="line">        res-&gt;next = head;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (cur-&gt;next != <span class="literal">NULL</span> &amp;&amp; cur-&gt;next-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            ListNode* temp = cur-&gt;next-&gt;next;</span><br><span class="line">            cur-&gt;next-&gt;next = temp-&gt;next;</span><br><span class="line">            temp-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = temp;</span><br><span class="line">            cur = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>进阶</strong>：</p><p>以下内容出自<a href="http://www.cnblogs.com/grandyang/p/4441680.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4441680.html</a></p><p>这题还可以使用递归方法，利用了回溯的思想，递归遍历到链表末尾，然后先交换末尾两个，然后依次往前交换。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!head || !head-&gt;next) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode *t = head-&gt;next;</span><br><span class="line">        head-&gt;next = swapPairs(head-&gt;next-&gt;next);</span><br><span class="line">        t-&gt;next = head;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;24-Swap-Nodes-in-Pairs&quot;&gt;&lt;a href=&quot;#24-Swap-Nodes-in-Pairs&quot; class=&quot;headerlink&quot; title=&quot;24. Swap Nodes in Pairs&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://le
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="链表" scheme="https://roychengc.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
+    
+      <category term="递归" scheme="https://roychengc.github.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode-23 Merge K Sorted Lists</title>
