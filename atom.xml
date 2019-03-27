@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-03-26T15:00:06.622Z</updated>
+  <updated>2019-03-27T15:11:22.408Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java笔记: final、finally、finalize有什么不同</title>
+    <link href="https://roychengc.github.io/2019/03/27/Java%E7%AC%94%E8%AE%B0-final%E3%80%81finally%E3%80%81finalize%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C/"/>
+    <id>https://roychengc.github.io/2019/03/27/Java笔记-final、finally、finalize有什么不同/</id>
+    <published>2019-03-27T14:34:41.000Z</published>
+    <updated>2019-03-27T15:11:22.408Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Java笔记: final、finally、finalize有什么不同</strong></p><ol><li><p>final可用来修饰类、变量和方法。</p><p>final修饰类表示这个类不能继承；</p><p>final修饰变量代表该变量不能被修改；</p><p>final修饰方法表示该方法不能被重写，即override。</p></li><li><p>finally是一种将某段代码必须被执行的机制。多使用try-catch-finally或try-finally来关闭JDBC连接。</p></li><li>finalize 是基础类 java.lang.Object的一个方法，它的设计目的是保证对象在被垃圾收集前完成特定资源的回收。finalize 机制现在已经不推荐使用，并且在 JDK 9 开始被标记为deprecated。</li></ol><p><strong>作用</strong>：</p><ol><li>final可以在某些场景中提高程序的性能。</li><li>finally用于关闭连接等资源</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">  System.exit(<span class="number">1</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span>&#123;</span><br><span class="line">  System.out.println(“Print from <span class="keyword">finally</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// finally中的代码不会执行</span></span><br></pre></td></tr></table></figure><ol start="3"><li>finalize的执行与垃圾收集关联在一起</li></ol><p><strong>注意</strong>：</p><ol><li>final不等同于immutable（不可改变）</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">final</span> List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"> strList.add(<span class="string">"Hello"</span>);</span><br><span class="line"> strList.add(<span class="string">"world"</span>);  </span><br><span class="line"> List&lt;String&gt; unmodifiableStrList = List.of(<span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br><span class="line"> unmodifiableStrList.add(<span class="string">"again"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// final只能约束strList不能被赋值，但是strList对象的行为不被约束</span></span><br></pre></td></tr></table></figure><ol start="2"><li>不要在finally中使用return语句</li><li>可以使用 java.lang.ref.Cleaner 取代 finalize 实现</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;strong&gt;Java笔记: final、finally、finalize有什么不同&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;final可用来修饰类、变量和方法。&lt;/p&gt;
+&lt;p&gt;final修饰类表示这个类不能继承；&lt;/p&gt;
+&lt;p&gt;final修饰变量代表该变量不能
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 24 Swap Nodes in Pairs</title>
