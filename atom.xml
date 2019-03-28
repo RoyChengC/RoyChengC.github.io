@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-03-27T15:11:22.408Z</updated>
+  <updated>2019-03-28T14:44:20.432Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java笔记: Exception和Error有什么区别</title>
+    <link href="https://roychengc.github.io/2019/03/28/Java%E7%AC%94%E8%AE%B0-Exception%E5%92%8CError%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+    <id>https://roychengc.github.io/2019/03/28/Java笔记-Exception和Error有什么区别/</id>
+    <published>2019-03-28T14:08:15.000Z</published>
+    <updated>2019-03-28T14:44:20.432Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Exception和Error有什么区别"><a href="#Exception和Error有什么区别" class="headerlink" title="Exception和Error有什么区别"></a>Exception和Error有什么区别</h4><p>Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出或捕获，它是异常处理机制的基本组成类型。</p><p>Exception 是程序正常运行中，可以预料的情况，应该被捕获，进行相应处理。Exception 又分为可检查异常和不检查异常，可检查异常在程序中必须显式的进行捕获。不检查异常即运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException 等，通常是可以解决的逻辑错误。</p><p>Error 指在正常情况下不太可能出现的情况，绝大多数 Error 都会导致程序处于非正常的、不可恢复的状态，因此 Error 不便于也不需要捕获。</p><p><img src="https://static001.geekbang.org/resource/image/ac/00/accba531a365e6ae39614ebfa3273900.png" alt="img"></p><h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ol><li>在 try-catch 语句中尽量不要使用类似 Exception 这样的通用异常，而应该捕获具体的异常，像 NullPointerException 等</li><li>不要忽略异常。如果我们不把异常抛出来，或者也没有输出到日志，程序可能在后续代码以不可控的方式结束</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;Exception和Error有什么区别&quot;&gt;&lt;a href=&quot;#Exception和Error有什么区别&quot; class=&quot;headerlink&quot; title=&quot;Exception和Error有什么区别&quot;&gt;&lt;/a&gt;Exception和Error有什么区别&lt;/h4&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java笔记: final、finally、finalize有什么不同</title>
