@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java笔记: 对Java平台的理解]]></title>
+    <url>%2F2019%2F03%2F29%2FJava%E7%AC%94%E8%AE%B0-%E5%AF%B9Java%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[对Java平台的理解Java 最显著的特性有两个方面，一个是“书写一次，到处运行”，即 Java 拥有跨平台的能力；第二个是垃圾收集机制（GC），Java 通过垃圾收集器回收和分配内存。 我们经常见到 JDK 和 JRE，JRE（Java Runtime Environment）是 Java 运行环境，它包含了 JVM 和 Java 类库等；JDK 提供了更多工具，如编译器和诊断工具。 Java 是解释执行的吗这个说法不太准确。我们编写的 Java 源码首先通过 Javac 编译成字节码，然后在运行时通过 Java 虚拟机内嵌的解释器将字节码转换成最终的机器码。Java 通过字节码和 Java 虚拟机这种跨平台的抽象，屏蔽了操作系统和硬件的细节，这是“书写一次，到处运行”的基础。 但是常见的 JVM 都提供了 JIT（Just-In-Time）编译器，即动态编译器，JIT 能够在运行是将热点代码编译成机器码，这种情况就是编译执行。 Java 知识扩展]]></content>
+      <categories>
+        <category>Java笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Java笔记: Exception和Error有什么区别]]></title>
     <url>%2F2019%2F03%2F28%2FJava%E7%AC%94%E8%AE%B0-Exception%E5%92%8CError%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%2F</url>
     <content type="text"><![CDATA[Exception和Error有什么区别Exception 和 Error 都是继承了 Throwable 类，在 Java 中只有 Throwable 类型的实例才可以被抛出或捕获，它是异常处理机制的基本组成类型。 Exception 是程序正常运行中，可以预料的情况，应该被捕获，进行相应处理。Exception 又分为可检查异常和不检查异常，可检查异常在程序中必须显式的进行捕获。不检查异常即运行时异常，类似 NullPointerException、ArrayIndexOutOfBoundsException 等，通常是可以解决的逻辑错误。 Error 指在正常情况下不太可能出现的情况，绝大多数 Error 都会导致程序处于非正常的、不可恢复的状态，因此 Error 不便于也不需要捕获。 注意事项 在 try-catch 语句中尽量不要使用类似 Exception 这样的通用异常，而应该捕获具体的异常，像 NullPointerException 等 不要忽略异常。如果我们不把异常抛出来，或者也没有输出到日志，程序可能在后续代码以不可控的方式结束]]></content>

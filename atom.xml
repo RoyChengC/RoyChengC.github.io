@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-03-28T14:44:20.432Z</updated>
+  <updated>2019-03-29T12:17:59.593Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java笔记: 对Java平台的理解</title>
+    <link href="https://roychengc.github.io/2019/03/29/Java%E7%AC%94%E8%AE%B0-%E5%AF%B9Java%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+    <id>https://roychengc.github.io/2019/03/29/Java笔记-对Java平台的理解/</id>
+    <published>2019-03-29T11:57:35.000Z</published>
+    <updated>2019-03-29T12:17:59.593Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="对Java平台的理解"><a href="#对Java平台的理解" class="headerlink" title="对Java平台的理解"></a>对Java平台的理解</h4><p>Java 最显著的特性有两个方面，一个是“书写一次，到处运行”，即 Java 拥有跨平台的能力；第二个是垃圾收集机制（GC），Java 通过垃圾收集器回收和分配内存。</p><p>我们经常见到 JDK 和 JRE，JRE（Java Runtime Environment）是 Java 运行环境，它包含了 JVM 和 Java 类库等；JDK 提供了更多工具，如编译器和诊断工具。</p><h4 id="Java-是解释执行的吗"><a href="#Java-是解释执行的吗" class="headerlink" title="Java 是解释执行的吗"></a>Java 是解释执行的吗</h4><p>这个说法不太准确。我们编写的 Java 源码首先通过 Javac 编译成字节码，然后在运行时通过 Java 虚拟机内嵌的解释器将字节码转换成最终的机器码。Java 通过字节码和 Java 虚拟机这种跨平台的抽象，屏蔽了操作系统和硬件的细节，这是“书写一次，到处运行”的基础。</p><p>但是常见的 JVM 都提供了 JIT（Just-In-Time）编译器，即动态编译器，JIT 能够在运行是将热点代码编译成机器码，这种情况就是编译执行。</p><h4 id="Java-知识扩展"><a href="#Java-知识扩展" class="headerlink" title="Java 知识扩展"></a>Java 知识扩展</h4><p><img src="https://static001.geekbang.org/resource/image/20/32/20bc6a900fc0b829c2f0e723df050732.png" alt="img"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;对Java平台的理解&quot;&gt;&lt;a href=&quot;#对Java平台的理解&quot; class=&quot;headerlink&quot; title=&quot;对Java平台的理解&quot;&gt;&lt;/a&gt;对Java平台的理解&lt;/h4&gt;&lt;p&gt;Java 最显著的特性有两个方面，一个是“书写一次，到处运行”，即 Java
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java笔记: Exception和Error有什么区别</title>
