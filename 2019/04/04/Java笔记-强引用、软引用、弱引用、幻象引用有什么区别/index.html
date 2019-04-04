@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="链表,排序,堆,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -88,18 +88,17 @@
 
 
 
-<meta name="description" content="23. Merge k Sorted ListsMerge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 合并k个有序链表，返回一个排好序的链表。 Example: 1234567Input:[  1-&amp;gt;4-&amp;gt;5,  1-&amp;gt;3-&amp;gt;4,">
-<meta name="keywords" content="链表,排序,堆">
+<meta name="description" content="强引用、软引用、弱引用、幻象引用有什么区别1.强引用 我们平常写代码的时候使用 Object obj = new Object() 中的 obj 就是强引用，即通过关键字 new 创建的对象所关联的引用就是强引用。当 JVM 内存不足时，JVM 宁愿抛出 OutOfMemoryError 运行时错误，使程序异常中止，也不会随意回收具有强引用的存活对象来解决内存不足的问题。对于一个普通的对象，如果没">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-23 Merge K Sorted Lists">
-<meta property="og:url" content="https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/index.html">
+<meta property="og:title" content="Java笔记: 强引用、软引用、弱引用、幻象引用有什么区别">
+<meta property="og:url" content="https://roychengc.github.io/2019/04/04/Java笔记-强引用、软引用、弱引用、幻象引用有什么区别/index.html">
 <meta property="og:site_name" content="Roy Cheng 的博客">
-<meta property="og:description" content="23. Merge k Sorted ListsMerge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 合并k个有序链表，返回一个排好序的链表。 Example: 1234567Input:[  1-&amp;gt;4-&amp;gt;5,  1-&amp;gt;3-&amp;gt;4,">
+<meta property="og:description" content="强引用、软引用、弱引用、幻象引用有什么区别1.强引用 我们平常写代码的时候使用 Object obj = new Object() 中的 obj 就是强引用，即通过关键字 new 创建的对象所关联的引用就是强引用。当 JVM 内存不足时，JVM 宁愿抛出 OutOfMemoryError 运行时错误，使程序异常中止，也不会随意回收具有强引用的存活对象来解决内存不足的问题。对于一个普通的对象，如果没">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-25T13:03:32.158Z">
+<meta property="og:updated_time" content="2019-04-04T13:54:09.511Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-23 Merge K Sorted Lists">
-<meta name="twitter:description" content="23. Merge k Sorted ListsMerge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity. 合并k个有序链表，返回一个排好序的链表。 Example: 1234567Input:[  1-&amp;gt;4-&amp;gt;5,  1-&amp;gt;3-&amp;gt;4,">
+<meta name="twitter:title" content="Java笔记: 强引用、软引用、弱引用、幻象引用有什么区别">
+<meta name="twitter:description" content="强引用、软引用、弱引用、幻象引用有什么区别1.强引用 我们平常写代码的时候使用 Object obj = new Object() 中的 obj 就是强引用，即通过关键字 new 创建的对象所关联的引用就是强引用。当 JVM 内存不足时，JVM 宁愿抛出 OutOfMemoryError 运行时错误，使程序异常中止，也不会随意回收具有强引用的存活对象来解决内存不足的问题。对于一个普通的对象，如果没">
 
 
 
@@ -129,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/">
+  <link rel="canonical" href="https://roychengc.github.io/2019/04/04/Java笔记-强引用、软引用、弱引用、幻象引用有什么区别/">
 
 
 
 
 
-  <title>leetcode-23 Merge K Sorted Lists | Roy Cheng 的博客</title>
+  <title>Java笔记: 强引用、软引用、弱引用、幻象引用有什么区别 | Roy Cheng 的博客</title>
   
 
 
@@ -306,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/">
+    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/04/04/Java笔记-强引用、软引用、弱引用、幻象引用有什么区别/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Roy Cheng">
@@ -323,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode-23 Merge K Sorted Lists</h1>
+          <h1 class="post-title" itemprop="name headline">Java笔记: 强引用、软引用、弱引用、幻象引用有什么区别</h1>
         
 
         <div class="post-meta">
@@ -335,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T23:32:16+08:00">
-                2019-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-04T21:30:59+08:00">
+                2019-04-04
               </time>
             
 
@@ -358,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/Java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Java笔记</span>
                   </a>
                 </span>
 
@@ -375,7 +374,7 @@
 
           
           
-             <span id="/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/" class="leancloud_visitors" data-flag-title="leetcode-23 Merge K Sorted Lists">
+             <span id="/2019/04/04/Java笔记-强引用、软引用、弱引用、幻象引用有什么区别/" class="leancloud_visitors" data-flag-title="Java笔记: 强引用、软引用、弱引用、幻象引用有什么区别">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -400,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  514
+                  920
                 </span>
               
 
@@ -416,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -437,18 +436,17 @@
       
 
       
-        <h4 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a></h4><p>Merge <em>k</em> sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p>
-<p>合并k个有序链表，返回一个排好序的链表。</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
-<p><strong>思路：</strong></p>
-<p>把k个链表中的元素一一取出，并将它们放入一个vector中，之后对vector进行排序。最后将排序好的vector转化成链表即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line">        <span class="keyword">int</span> n = lists.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            ListNode* node = lists[i];</span><br><span class="line">            <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                vec.push_back(node-&gt;val);</span><br><span class="line">                node = node-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(vec.begin(), vec.end());</span><br><span class="line">        <span class="function">ListNode <span class="title">head</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        ListNode* result = &amp;head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)vec.size(); ++i) &#123;</span><br><span class="line">            ListNode* temp = <span class="keyword">new</span> ListNode(vec[i]);</span><br><span class="line">            result-&gt;next = temp;</span><br><span class="line">            result = result-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>进阶：</strong></p>
-<p>以下出自<a href="http://www.cnblogs.com/grandyang/p/4606710.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4606710.html</a></p>
-<p>之前有一道合并两个有序链表链表的题目（<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. Merge Two Sorted Lists</a>），我们同样可以通过两两合并来解决这道问题，但是这样做时间复杂度太高。</p>
-<p>我们可以通过最小堆解决这个问题。首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素再加入堆中，下次仍从堆中取出最小的元素做相同的操作，以此类推，直到堆中没有元素了，此时k个链表也合并为了一个链表，返回首节点即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> cmp = [](ListNode*&amp; a, ListNode*&amp; b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;;</span><br><span class="line">        priority_queue&lt;ListNode*, <span class="built_in">vector</span>&lt;ListNode*&gt;, <span class="keyword">decltype</span>(cmp) &gt; q(cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> node : lists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node) q.push(node);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> ListNode(<span class="number">-1</span>), *cur = dummy;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> t = q.top(); q.pop();</span><br><span class="line">            cur-&gt;next = t;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;next) q.push(cur-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h3 id="强引用、软引用、弱引用、幻象引用有什么区别"><a href="#强引用、软引用、弱引用、幻象引用有什么区别" class="headerlink" title="强引用、软引用、弱引用、幻象引用有什么区别"></a>强引用、软引用、弱引用、幻象引用有什么区别</h3><p><strong>1.强引用</strong></p>
+<p>我们平常写代码的时候使用 Object obj = new Object() 中的 obj 就是强引用，即通过关键字 new 创建的对象所关联的引用就是强引用。当 JVM 内存不足时，JVM 宁愿抛出 OutOfMemoryError 运行时错误，使程序异常中止，也不会随意回收具有强引用的存活对象来解决内存不足的问题。对于一个普通的对象，如果没有其他的引用关系，只要超过了引用的作用域或者显式的将相应（强）引用赋值为 null，就是可以被垃圾回收的了。</p>
+<p><strong>2.软引用</strong></p>
+<p>软引用的生命周期比强引用短一些。只有当 JVM 认为内存不足时，才会去试图回收软引用指向的对象，即 JVM 会确保在抛出 OutOfMemoryError 之前，清理软引用指向的对象。软引用可以和一个引用队列（ReferenceQueue）联合使用，如果软引用所引用的对象被垃圾回收器回收，Java 虚拟机就会把这个软引用加入到与之关联的引用队列中。后续我们可以调用 ReferenceQueue 的 poll() 方法来检查是否有它所关心的对象被回收。如果队列为空，将返回一个 null ，否则该方法返回队列中前面的一个 Reference 对象。</p>
+<p>应用场景：软引用通常用来实现内存敏感的缓存。如果还有空闲内存，就可以暂时保留缓存，当内存不足时清理掉，这样就保证了使用缓存的同时，不会耗尽内存。</p>
+<p><strong>3.弱引用</strong></p>
+<p>弱引用的生命周期比软引用短。在垃圾回收器线程扫描它所管辖的内存区域的过程中，一旦发现了具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存。垃圾回收器是一个优先级很低的线程，因此不一定会很快回收弱引用对象。弱引用可以和一个引用队列（ReferenceQueue）联合使用，如果弱引用所引用的对象被垃圾回收，Java 虚拟机就会把这个弱引用加入到与之关联的引用队列中。</p>
+<p>应用场景：弱应用同样可用于内存敏感的缓存。</p>
+<p><strong>4.幻象引用（虚引用）</strong></p>
+<p>无法通过幻象引用访问对象的任何属性或函数。幻象引用仅仅是提供了一种确保对象被 finalize 后，做某些事情的机制。如果一个对象仅持有幻象引用，那么它就和没有任何引用一样，在任何时候都可能被垃圾回收器回收。虚引用必须和引用队列 （ReferenceQueue）联合使用。当垃圾回收器准备回收一个对象时，如果发现它还有虚引用，就会在回收对象的内存之前，把这个虚引用加入到与之关联的引用队列中。程序可以通过判断引用队列中是否已经加入了虚引用，来了解被引用的对象是否将要被垃圾回收。如果程序发现某个虚引用已经被加入到引用队列，那么就可以在所引用的对象的内存被回收之前采取一些程序行动。</p>
+<p>应用场景：可用来跟踪对象被垃圾回收器回收的活动，当一个虚引用关联的对象被垃圾收集器回收之前会收到一条系统通知。</p>
 
       
     </div>
@@ -464,16 +462,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/链表/" rel="tag"># 链表</a>
-          
-            <a href="/tags/排序/" rel="tag"># 排序</a>
-          
-            <a href="/tags/堆/" rel="tag"># 堆</a>
-          
-        </div>
-      
 
       
       
@@ -483,8 +471,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/19/软件构造复习提纲/" rel="next" title="软件构造复习提纲">
-                <i class="fa fa-chevron-left"></i> 软件构造复习提纲
+              <a href="/2019/03/29/Java笔记-对Java平台的理解/" rel="next" title="Java笔记: 对Java平台的理解">
+                <i class="fa fa-chevron-left"></i> Java笔记: 对Java平台的理解
               </a>
             
           </div>
@@ -492,10 +480,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/03/26/leetcode-24-Swap-Nodes-in-Pairs/" rel="prev" title="leetcode 24 Swap Nodes in Pairs">
-                leetcode 24 Swap Nodes in Pairs <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -652,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#23-Merge-k-Sorted-Lists"><span class="nav-number">1.</span> <span class="nav-text">23. Merge k Sorted Lists</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#强引用、软引用、弱引用、幻象引用有什么区别"><span class="nav-number">1.</span> <span class="nav-text">强引用、软引用、弱引用、幻象引用有什么区别</span></a></li></ol></div>
             
 
           </div>
