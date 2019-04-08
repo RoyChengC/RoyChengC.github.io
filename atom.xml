@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-07T12:59:21.592Z</updated>
+  <updated>2019-04-08T14:02:08.708Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 167 Two Sum II - Input array is sorted</title>
+    <link href="https://roychengc.github.io/2019/04/08/leetcode-167-Two-Sum-II-Input-array-is-sorted/"/>
+    <id>https://roychengc.github.io/2019/04/08/leetcode-167-Two-Sum-II-Input-array-is-sorted/</id>
+    <published>2019-04-08T13:54:05.000Z</published>
+    <updated>2019-04-08T14:02:08.708Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167. Two Sum II - Input array is sorted"></a><a href="https://leetcode-cn.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input array is sorted</a></h4><p>Given an array of integers that is already <strong>sorted in ascending order</strong>, find two numbers such that they add up to a specific target number.</p><p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2.</p><p><strong>Note:</strong></p><ul><li>Your returned answers (both index1 and index2) are not zero-based.</li><li>You may assume that each input would have <em>exactly</em> one solution and you may not use the <em>same</em> element twice.</li></ul><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: numbers = [2,7,11,15], target = 9</span><br><span class="line">Output: [1,2]</span><br><span class="line">Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2.</span><br></pre></td></tr></table></figure><p>给定一个升序排序的整数数组 numbers，在这个数组中找两个数字，使得这两个数字相加等于给定目标数字 target，找到之后返回这两个数字的下标 + 1。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>可以使用双指针法，用一个指针 low 指向数组头部，另一个指针 high 指向数组尾部。然后在遍历这个数组时，判断 numbers[low] + numbers[high] 是否为 target。当 numbers[low] + numbers[high] &lt; target，说明 numbers[low] 这个数字偏小，需要将 low + 1；当 numbers[low] + numbers[high] &gt; target，说明 numbers[high] 这个数字偏大，需要将 high - 1。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = numbers.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low != high) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = numbers[low] + numbers[high];</span><br><span class="line">            <span class="keyword">if</span>(sum &gt; target) high--;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target) low++;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;low + <span class="number">1</span>, high + <span class="number">1</span>&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;167-Two-Sum-II-Input-array-is-sorted&quot;&gt;&lt;a href=&quot;#167-Two-Sum-II-Input-array-is-sorted&quot; class=&quot;headerlink&quot; title=&quot;167. Two Sum II - In
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="双指针" scheme="https://roychengc.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java笔记: int 和 Integer 的区别</title>
+    <link href="https://roychengc.github.io/2019/04/07/Java%E7%AC%94%E8%AE%B0-int-%E5%92%8C-Integer-%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>https://roychengc.github.io/2019/04/07/Java笔记-int-和-Integer-的区别/</id>
+    <published>2019-04-07T14:42:25.000Z</published>
+    <updated>2019-04-08T13:49:07.781Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="int-和-Integer-有什么区别"><a href="#int-和-Integer-有什么区别" class="headerlink" title="int 和 Integer 有什么区别"></a>int 和 Integer 有什么区别</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>int 也就是整型数字，是 Java 的 8 个原始数据类型之一。Java 虽然号称一切都是对象，但原始数据类型是个例外。</p><p>Integer 是 int 对应的包装类，这个类中包含一个 int 类型的字段存储数据，并且提供了数学运算、int 和字符串之间的转换等基本操作。在 Java 5 中，提供了自动装箱和自动拆箱功能，Java 可以根据上下文，自动进行转换。</p><p>我们一般使用 new 关键字构建一个 Integer 对象，而大部分数据操作都是集中在有限的较小的数值范围，因此，Java 5 中新增了静态方法 valueOf，在调用它的时候会利用一个缓存机制。这个值默认缓存在 -128~127 之间。</p><p>.</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.自动装箱、自动拆箱</strong></p><p>自动装箱、自动拆箱其实是一种语法糖，即 Java 为我们自动进行了一些转换，保证不同的写法在运行时等价，它们发生在编译阶段，也就是生成的字节码是一致的。</p><p>javac 把自动装箱转换为 Integer.valueOf()，把拆箱转换为 Integer.intValue()。</p><p>在编程实践中，我们应避免不必要的装箱拆箱行为。因为 Integer 是一个对象，创建多个对象的开销是比创建多个整数的开销多的。</p><p><strong>2.原始类型线程安全</strong></p><p>原始数据类型的变量，显然要使用并发相关手段，才能保证线程安全。如果有线程安全的需要，建议使用类似 AtomicInteger、AtomicLong 这样的线程安全类。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;int-和-Integer-有什么区别&quot;&gt;&lt;a href=&quot;#int-和-Integer-有什么区别&quot; class=&quot;headerlink&quot; title=&quot;int 和 Integer 有什么区别&quot;&gt;&lt;/a&gt;int 和 Integer 有什么区别&lt;/h3&gt;&lt;h4 i
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java笔记: String、StringBuffer、StringBuilder 有什么区别</title>

@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 167 Two Sum II - Input array is sorted]]></title>
+    <url>%2F2019%2F04%2F08%2Fleetcode-167-Two-Sum-II-Input-array-is-sorted%2F</url>
+    <content type="text"><![CDATA[167. Two Sum II - Input array is sortedGiven an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number. The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Note: Your returned answers (both index1 and index2) are not zero-based. You may assume that each input would have exactly one solution and you may not use the same element twice. Example: 123Input: numbers = [2,7,11,15], target = 9Output: [1,2]Explanation: The sum of 2 and 7 is 9. Therefore index1 = 1, index2 = 2. 给定一个升序排序的整数数组 numbers，在这个数组中找两个数字，使得这两个数字相加等于给定目标数字 target，找到之后返回这两个数字的下标 + 1。 思路可以使用双指针法，用一个指针 low 指向数组头部，另一个指针 high 指向数组尾部。然后在遍历这个数组时，判断 numbers[low] + numbers[high] 是否为 target。当 numbers[low] + numbers[high] &lt; target，说明 numbers[low] 这个数字偏小，需要将 low + 1；当 numbers[low] + numbers[high] &gt; target，说明 numbers[high] 这个数字偏大，需要将 high - 1。 1234567891011121314class Solution &#123; public int[] twoSum(int[] numbers, int target) &#123; int low = 0, high = numbers.length - 1; while (low != high) &#123; int sum = numbers[low] + numbers[high]; if(sum &gt; target) high--; else if (sum &lt; target) low++; else &#123; return new int[] &#123;low + 1, high + 1&#125;; &#125; &#125; return null; &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java笔记: int 和 Integer 的区别]]></title>
+    <url>%2F2019%2F04%2F07%2FJava%E7%AC%94%E8%AE%B0-int-%E5%92%8C-Integer-%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[int 和 Integer 有什么区别基本知识int 也就是整型数字，是 Java 的 8 个原始数据类型之一。Java 虽然号称一切都是对象，但原始数据类型是个例外。 Integer 是 int 对应的包装类，这个类中包含一个 int 类型的字段存储数据，并且提供了数学运算、int 和字符串之间的转换等基本操作。在 Java 5 中，提供了自动装箱和自动拆箱功能，Java 可以根据上下文，自动进行转换。 我们一般使用 new 关键字构建一个 Integer 对象，而大部分数据操作都是集中在有限的较小的数值范围，因此，Java 5 中新增了静态方法 valueOf，在调用它的时候会利用一个缓存机制。这个值默认缓存在 -128~127 之间。 . 知识扩展1.自动装箱、自动拆箱 自动装箱、自动拆箱其实是一种语法糖，即 Java 为我们自动进行了一些转换，保证不同的写法在运行时等价，它们发生在编译阶段，也就是生成的字节码是一致的。 javac 把自动装箱转换为 Integer.valueOf()，把拆箱转换为 Integer.intValue()。 在编程实践中，我们应避免不必要的装箱拆箱行为。因为 Integer 是一个对象，创建多个对象的开销是比创建多个整数的开销多的。 2.原始类型线程安全 原始数据类型的变量，显然要使用并发相关手段，才能保证线程安全。如果有线程安全的需要，建议使用类似 AtomicInteger、AtomicLong 这样的线程安全类。]]></content>
+      <categories>
+        <category>Java笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[Java笔记: String、StringBuffer、StringBuilder 有什么区别]]></title>
     <url>%2F2019%2F04%2F07%2FJava%E7%AC%94%E8%AE%B0-String%E3%80%81StringBuffer%E3%80%81StringBuilder-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%2F</url>
     <content type="text"><![CDATA[String、StringBuffer、StringBuilder 有什么区别. 基础知识String：在 Java 中，String 被声明为 final class，所有的属性也都是 final 的。由于 String 的不可变性，类似字符串的拼接、剪切等动作，都会产生新的 String 对象。而对字符串的操作是很普遍的，所以相关操作的效率会对应用性能有影响。 StringBuffer：StringBuffer 是为了解决字符串拼接时产生的大量中间对象的问题而提供的一个类，具体的拼接方法有 append 和 add。StringBuffer 可以保证线程安全，但是也随之带来了额外的性能开销。所以除非有线程安全的需要，不然还是推荐使用 StringBuilder。 StringBuilder：在功能上与 StringBuffer没有本质区别，但是它去除了线程安全部分，减小了开销，是绝大部分情况下进行字符串拼接的首选。 知识扩展1.字符串设计和实现 之前讲到 String 是 Immutable 类，它也能保证线程安全，因为你不能对它内部的数据进行任何修改。 再看 StringBuffer 类实现的一些细节，它的线程安全功能是通过把各种修改数据的方法都加上 synchronized 关键字实现的，非常简单粗暴。其实这样的实现方式非常适合我们常见的线程安全类的实现。 为了实现字符串的拼接，StringBuffer 和 StringBuilder 底层都是利用可修改的数组（char 类型，JDK9 以后是 byte）数组，两者都是继承自 AbstractStringBuilder，区别仅在于方法是否加了 synchronized。 这个可修改的数组目前的实现是，构建时初始字符串长度加16，也就是说如果没有构建对象时输入的字符串，那么初始值就是16。 在日常编程中，还是要保证代码的可读性、可维护性，这往往比最优性能更重要。 . 2.字符串常量池 在我们的日常编程中，String 的使用是很频繁的，Java 为了避免在一个系统中产生大量的 String 对象，引入了字符串常量池。在创建一个字符串时，首先检查常量池中是否有对应值的字符串对象，如果有则直接创建从池中查找到的对象引用，如果没有则新建一个 String 对象，返回对象引用，并将新创建的对象放入常量池。但是通过 new 的方式创建的 String 对象是不会去搜索常量池的，而是直接在堆区或栈区创建一个新的对象，也不会把对象放入常量池中。 12String str1 = "123"; //通过直接量赋值方式，放入字符串常量池String str2 = new String(“123”);//通过new方式赋值方式，不放入字符串常量池 String 在 Java 6 以后还提供了 intern() 方法，目的是提示 JVM 把相应字符串缓存起来，以备重复使用。在我们创建字符串对象并调用 intern() 方法时，如果已经有缓存的字符串，就会返回缓存中的实例，否则将其缓存起来。 . 3.应用场景 在字符串内容不经常发生变化的场景优先使用 String 类。如：常量声明、少量的字符串拼接操作等。如果有大量字符串拼接操作，应避免使用 String 与 String 之间的 ”+“ 操作。 在频繁进行字符串拼接、替换、删除等，并且运行在多线程环境下，建议使用 StringBuffer，例如 XML 解析、HTTP 参数解析与封装。 在频繁进行字符串拼接、替换、删除等，并且运行在单线程环境下，建议使用 StringBuilder，例如 SQL 语句拼接、JSON 封装等。]]></content>
