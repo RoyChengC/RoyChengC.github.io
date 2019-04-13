@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-11T11:05:10.361Z</updated>
+  <updated>2019-04-13T09:39:31.704Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 633 Sum of Square Numbers</title>
+    <link href="https://roychengc.github.io/2019/04/13/leetcode-633-Sum-of-Square-Numbers/"/>
+    <id>https://roychengc.github.io/2019/04/13/leetcode-633-Sum-of-Square-Numbers/</id>
+    <published>2019-04-13T09:33:01.000Z</published>
+    <updated>2019-04-13T09:39:31.704Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="633-Sum-of-Square-Numbers"><a href="#633-Sum-of-Square-Numbers" class="headerlink" title="633. Sum of Square Numbers"></a><a href="https://leetcode-cn.com/problems/sum-of-square-numbers/" target="_blank" rel="noopener">633. Sum of Square Numbers</a></h4><p>Given a non-negative integer <code>c</code>, your task is to decide whether there’re two integers <code>a</code> and <code>b</code>such that a^2 + b^2 = c.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: 5</span><br><span class="line">Output: True</span><br><span class="line">Explanation: 1 * 1 + 2 * 2 = 5</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: 3</span><br><span class="line">Output: False</span><br></pre></td></tr></table></figure><p>给你一个非负整数 c，判断是否存在两个整数a、b，使得a^2+b^2 = c</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用双指针法。首先我们可以确定取数的范围 0~根号c，使用两个指针分别指向 0 和根号c，然后从这个范围进行遍历。</p><p>注意有一个例子是 4，这个样例应该返回 true，因为 0 + 2*2 = 4，可以找到两个整数 0 和 2，因此取数的最小值是 0。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeSquareSum</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> high = (<span class="keyword">int</span>) Math.sqrt(c);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (low &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">int</span> sum = low * low + high * high;</span><br><span class="line">            <span class="keyword">if</span> (sum == c) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; c) low++;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; c) high--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;633-Sum-of-Square-Numbers&quot;&gt;&lt;a href=&quot;#633-Sum-of-Square-Numbers&quot; class=&quot;headerlink&quot; title=&quot;633. Sum of Square Numbers&quot;&gt;&lt;/a&gt;&lt;a href=&quot;h
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="双指针" scheme="https://roychengc.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+  </entry>
   
   <entry>
     <title>Java笔记: Hashtable、HashMap、TreeMap 有什么不同</title>
