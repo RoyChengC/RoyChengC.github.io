@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 34 Find First and Last Position of Element in Sorted Array]]></title>
+    <url>%2F2019%2F04%2F13%2Fleetcode-34-Find-First-and-Last-Position-of-Element-in-Sorted-Array%2F</url>
+    <content type="text"><![CDATA[34. Find First and Last Position of Element in Sorted ArrayGiven an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n). If the target is not found in the array, return [-1, -1]. Example 1: 12Input: nums = [5,7,7,8,8,10], target = 8Output: [3,4] Example 2: 12Input: nums = [5,7,7,8,8,10], target = 6Output: [-1,-1] 给你一个排好序的数组和一个目标值，在数组中找到第一个等于目标值和最后一个等于目标值的元素的下标，如果没有找到目标值，返回 [-1，-1]。 思路用二分查找法找到目标值所在的下标，然后根据这个下标往左右扩展即可。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546class Solution &#123; public int[] searchRange(int[] nums, int target) &#123; int low = 0; int high = nums.length - 1; int[] result = new int[2]; int find = -1; while (low &lt;= high) &#123; int mid = low + (high - low) / 2; if (nums[mid] == target) &#123; find = mid; break; &#125; else if (nums[mid] &lt; target) low = mid + 1; else if (nums[mid] &gt; target) high = mid - 1; &#125; if (find == -1) &#123; result[0] = -1; result[1] = -1; return result; &#125; low = find; high = find; while (nums[low] == target) &#123; if (low &gt; 0 &amp;&amp; nums[low - 1] == target) &#123; low -= 1; result[0] = low; &#125; else &#123; result[0] = low; break; &#125; &#125; while(nums[high] == target) &#123; if (high &lt; nums.length - 1 &amp;&amp; nums[high + 1] == target) &#123; high += 1; result[1] = high; &#125; else &#123; result[1] = high; break; &#125; &#125; return result; &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 633 Sum of Square Numbers]]></title>
     <url>%2F2019%2F04%2F13%2Fleetcode-633-Sum-of-Square-Numbers%2F</url>
     <content type="text"><![CDATA[633. Sum of Square NumbersGiven a non-negative integer c, your task is to decide whether there’re two integers a and bsuch that a^2 + b^2 = c. Example 1: 123Input: 5Output: TrueExplanation: 1 * 1 + 2 * 2 = 5 Example 2: 12Input: 3Output: False 给你一个非负整数 c，判断是否存在两个整数a、b，使得a^2+b^2 = c 思路使用双指针法。首先我们可以确定取数的范围 0~根号c，使用两个指针分别指向 0 和根号c，然后从这个范围进行遍历。 注意有一个例子是 4，这个样例应该返回 true，因为 0 + 2*2 = 4，可以找到两个整数 0 和 2，因此取数的最小值是 0。 1234567891011121314class Solution &#123; public boolean judgeSquareSum(int c) &#123; int low = 0; int high = (int) Math.sqrt(c); while (low &lt;= high) &#123; int sum = low * low + high * high; if (sum == c) return true; else if (sum &lt; c) low++; else if (sum &gt; c) high--; &#125; return false; &#125;&#125;]]></content>
