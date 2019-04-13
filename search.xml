@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 345 Reverse Vowels of a String]]></title>
+    <url>%2F2019%2F04%2F13%2Fleetcode-345-Reverse-Vowels-of-a-String%2F</url>
+    <content type="text"><![CDATA[345. Reverse Vowels of a StringWrite a function that takes a string as input and reverse only the vowels of a string. Example 1: 12Input: &quot;hello&quot;Output: &quot;holle&quot; Example 2: 12Input: &quot;leetcode&quot;Output: &quot;leotcede&quot; Note:The vowels does not include the letter “y”. 反转一个字符串中的元音字母。 思路使用双指针法，创建两个指针 low 和 high 分别指向 0 和 s.length() - 1，然后创建一个新的字符数组 result，通过遍历，如果 s[low] 和 s[high] 都是元音，result[low++] = s[high]，result[high- -] = s[low]；如果 s[low] 或 s[high] 不是元音，则 result[low++] = s[low]，result[high- -] = s[high]。 12345678910111213141516171819202122232425class Solution &#123; public boolean isVowel(char c) &#123; return c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U'; &#125; public String reverseVowels(String s) &#123; int low = 0; int high = s.length() - 1; char[] result = new char[s.length()]; while (low &lt;= high) &#123; char a = s.charAt(low); char b = s.charAt(high); if (!isVowel(a)) result[low++] = a; else if (!isVowel(b)) result[high--] = b; else &#123; result[low++] = b; result[high--] = a; &#125; &#125; return new String(result); &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 215 Kth Largest Element in an Array]]></title>
+    <url>%2F2019%2F04%2F13%2Fleetcode-215-Kth-Largest-Element-in-an-Array%2F</url>
+    <content type="text"><![CDATA[215. Kth Largest Element in an ArrayFind the kth largest element in an unsorted array. Note that it is the kth largest element in the sorted order, not the kth distinct element. Example 1: 12Input: [3,2,1,5,6,4] and k = 2Output: 5 Example 2: 12Input: [3,2,3,1,2,4,5,5,6] and k = 4Output: 4 Note:You may assume k is always valid, 1 ≤ k ≤ array’s length. 找到一个未排序的数组中第 k 大的元素。 思路可以使用堆排序，维护一个优先级队列，遍历所有元素时把元素往队列里放，保持这个队列的大小不大于 k，最后返回队列的第一个元素即可。 1234567891011class Solution &#123; public int findKthLargest(int[] nums, int k) &#123; PriorityQueue&lt;Integer&gt; pq = new PriorityQueue&lt;&gt;(); for (int n : nums) &#123; pq.add(n); if (pq.size() &gt; k) pq.poll(); &#125; return pq.peek(); &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>排序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 34 Find First and Last Position of Element in Sorted Array]]></title>
     <url>%2F2019%2F04%2F13%2Fleetcode-34-Find-First-and-Last-Position-of-Element-in-Sorted-Array%2F</url>
     <content type="text"><![CDATA[34. Find First and Last Position of Element in Sorted ArrayGiven an array of integers nums sorted in ascending order, find the starting and ending position of a given target value. Your algorithm’s runtime complexity must be in the order of O(log n). If the target is not found in the array, return [-1, -1]. Example 1: 12Input: nums = [5,7,7,8,8,10], target = 8Output: [3,4] Example 2: 12Input: nums = [5,7,7,8,8,10], target = 6Output: [-1,-1] 给你一个排好序的数组和一个目标值，在数组中找到第一个等于目标值和最后一个等于目标值的元素的下标，如果没有找到目标值，返回 [-1，-1]。 思路用二分查找法找到目标值所在的下标，然后根据这个下标往左右扩展即可。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546class Solution &#123; public int[] searchRange(int[] nums, int target) &#123; int low = 0; int high = nums.length - 1; int[] result = new int[2]; int find = -1; while (low &lt;= high) &#123; int mid = low + (high - low) / 2; if (nums[mid] == target) &#123; find = mid; break; &#125; else if (nums[mid] &lt; target) low = mid + 1; else if (nums[mid] &gt; target) high = mid - 1; &#125; if (find == -1) &#123; result[0] = -1; result[1] = -1; return result; &#125; low = find; high = find; while (nums[low] == target) &#123; if (low &gt; 0 &amp;&amp; nums[low - 1] == target) &#123; low -= 1; result[0] = low; &#125; else &#123; result[0] = low; break; &#125; &#125; while(nums[high] == target) &#123; if (high &lt; nums.length - 1 &amp;&amp; nums[high + 1] == target) &#123; high += 1; result[1] = high; &#125; else &#123; result[1] = high; break; &#125; &#125; return result; &#125;&#125;]]></content>
