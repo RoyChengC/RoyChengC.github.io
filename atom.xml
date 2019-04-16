@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-13T14:02:03.453Z</updated>
+  <updated>2019-04-16T13:59:18.260Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java笔记: 如何保证容器是线程安全的</title>
+    <link href="https://roychengc.github.io/2019/04/16/Java%E7%AC%94%E8%AE%B0-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%AE%B9%E5%99%A8%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84/"/>
+    <id>https://roychengc.github.io/2019/04/16/Java笔记-如何保证容器是线程安全的/</id>
+    <published>2019-04-16T13:12:25.000Z</published>
+    <updated>2019-04-16T13:59:18.260Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="如何保证容器是线程安全的"><a href="#如何保证容器是线程安全的" class="headerlink" title="如何保证容器是线程安全的"></a>如何保证容器是线程安全的</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>Java 提供了不同层面的线程安全支持。在传统集合中，除了 Hashtable 等同步容器，还提供了同步包装器，我们可以调用 Collections 工具类提供的包装方法，来获取一个同步的包装容器，但是它们都是非常粗的同步方式，性能较低下。</p><p>更常见的选择是使用线程安全容器类，它提供了：</p><ul><li>各种并发容器，如 ConcurrentHashMap、CopyOnWriteArrayList</li><li>各种线程安全队列，如 ArrayBlockingQueue、SynchronousQueue</li><li>各种有序容器的线程安全版本等</li></ul><p>总的来说，保证线程安全的方式有简单的 synchronize 方式，还有更加精细的 ConcurrentHashMap 等并发实现等。不过，并发包内提供的容器远优于简单的同步实现。</p><p>.</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.为什么需要 ConcurrentHashMap</strong></p><p>因为 Hashtable 比较低效，它的实现基本只是将 put、get 等方法加上 synchronized。这就导致了所有并发操作都要竞争同一把锁，一个线程在进行同步操作时，其他线程只能等待，因此效率低下。</p><p><strong>2.ConcurrentHashMap 分析</strong></p><p>ConcurrentHashMap 的设计实现一直在演化，早期的 ConcurrentHashMap，其实现是基于：</p><ul><li>分离锁，即将内部进行分段，里面则是 HashEntry 数组，和 HashMap 类似，哈希相同的数据也是以链表形式存储</li><li>HashEntry 内部使用 volatile 的 value 字段来保证可见性，也利用了不可变对象的机制以改进利用 Unsafe 提供的底层能力，直接完成部分操作，以最优化性能</li></ul><p>下面是早期 ConcurrentHashMap 内部结构的示意图，核心是利用分段设计，在进行并发操作的时候，只需要锁定相应段，这样就有效避免了类似 Hashtable 整体同步的问题，大大提高了性能。</p><p><img src="https://static001.geekbang.org/resource/image/d4/d9/d45bcf9a34da2ef1ef335532b0198bd9.png" alt="img"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;如何保证容器是线程安全的&quot;&gt;&lt;a href=&quot;#如何保证容器是线程安全的&quot; class=&quot;headerlink&quot; title=&quot;如何保证容器是线程安全的&quot;&gt;&lt;/a&gt;如何保证容器是线程安全的&lt;/h3&gt;&lt;h4 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; cla
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 46 Permutations</title>
+    <link href="https://roychengc.github.io/2019/04/16/leetcode-46-Permutations/"/>
+    <id>https://roychengc.github.io/2019/04/16/leetcode-46-Permutations/</id>
+    <published>2019-04-16T12:56:17.000Z</published>
+    <updated>2019-04-16T13:01:01.885Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="46-Permutations"><a href="#46-Permutations" class="headerlink" title="46. Permutations"></a><a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. Permutations</a></h4><p>Given a collection of <strong>distinct</strong> integers, return all possible permutations.</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,2,3]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [1,2,3],</span><br><span class="line">  [1,3,2],</span><br><span class="line">  [2,1,3],</span><br><span class="line">  [2,3,1],</span><br><span class="line">  [3,1,2],</span><br><span class="line">  [3,2,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>给你一个没有重复数字的数组，返回所有可能的排列。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>使用递归 + 回溯的方法，每次递归从数组 nums 里面取一个数字添加到一个解 list 中，并把这个数字从数组里删除。回溯时把第 n 次递归删除的数添加进数组 nums 里，再把 list 中最后一个元素删除。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">generate</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, List&lt;Integer&gt; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(list));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = nums.get(i);</span><br><span class="line">            nums.remove(i);</span><br><span class="line">            list.add(temp);</span><br><span class="line">            generate(result, list, nums);</span><br><span class="line">            list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">            nums.add(i, temp); <span class="comment">// 添加回删除的元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permute(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; n = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            n.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        generate(result, list, n);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;46-Permutations&quot;&gt;&lt;a href=&quot;#46-Permutations&quot; class=&quot;headerlink&quot; title=&quot;46. Permutations&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/problem
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="递归" scheme="https://roychengc.github.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="回溯" scheme="https://roychengc.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>leetcode 47 Permutations II</title>
+    <link href="https://roychengc.github.io/2019/04/16/leetcode-47-Permutations-II/"/>
+    <id>https://roychengc.github.io/2019/04/16/leetcode-47-Permutations-II/</id>
+    <published>2019-04-16T12:54:24.000Z</published>
+    <updated>2019-04-16T13:05:44.857Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="47-Permutations-II"><a href="#47-Permutations-II" class="headerlink" title="47. Permutations II"></a><a href="https://leetcode-cn.com/problems/permutations-ii/" target="_blank" rel="noopener">47. Permutations II</a></h4><p>Given a collection of numbers that might contain duplicates, return all possible unique permutations.</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,1,2]</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [1,1,2],</span><br><span class="line">  [1,2,1],</span><br><span class="line">  [2,1,1]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p>给你一个可能存在重复数字的数组，求出所有可能的排列。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这题与<a href="https://leetcode-cn.com/problems/permutations/" target="_blank" rel="noopener">46. Permutations</a>解法相似，区别在于这题的数组中可能存在重复数字，因此我们要考虑去重的问题。我们把题目所给的数组先从小到大排序，然后在执行递归函数之前判断 nums[i] 与 nums[i - 1] 是否相等，如果相等，continue 循环。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">generate</span><span class="params">(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, List&lt;Integer&gt; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">0</span>) &#123;</span><br><span class="line">            result.add(<span class="keyword">new</span> ArrayList&lt;&gt;(list));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums.get(i) == nums.get(i - <span class="number">1</span>)) <span class="keyword">continue</span>; <span class="comment">// 去重</span></span><br><span class="line">            <span class="keyword">int</span> temp = nums.get(i);</span><br><span class="line">            nums.remove(i);</span><br><span class="line">            list.add(temp);</span><br><span class="line">            generate(result, list, nums);</span><br><span class="line">            list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">            nums.add(i, temp); <span class="comment">// 添加回删除的元素</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; permuteUnique(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            list.add(nums[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        generate(result, temp, list);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;47-Permutations-II&quot;&gt;&lt;a href=&quot;#47-Permutations-II&quot; class=&quot;headerlink&quot; title=&quot;47. Permutations II&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.co
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="递归" scheme="https://roychengc.github.io/tags/%E9%80%92%E5%BD%92/"/>
+    
+      <category term="回溯" scheme="https://roychengc.github.io/tags/%E5%9B%9E%E6%BA%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>leetcode 345 Reverse Vowels of a String</title>
@@ -428,89 +505,6 @@
     
       <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Java笔记: final、finally、finalize有什么不同</title>
-    <link href="https://roychengc.github.io/2019/03/27/Java%E7%AC%94%E8%AE%B0-final%E3%80%81finally%E3%80%81finalize%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C/"/>
-    <id>https://roychengc.github.io/2019/03/27/Java笔记-final、finally、finalize有什么不同/</id>
-    <published>2019-03-27T14:34:41.000Z</published>
-    <updated>2019-03-27T15:11:22.408Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>Java笔记: final、finally、finalize有什么不同</strong></p><ol><li><p>final可用来修饰类、变量和方法。</p><p>final修饰类表示这个类不能继承；</p><p>final修饰变量代表该变量不能被修改；</p><p>final修饰方法表示该方法不能被重写，即override。</p></li><li><p>finally是一种将某段代码必须被执行的机制。多使用try-catch-finally或try-finally来关闭JDBC连接。</p></li><li>finalize 是基础类 java.lang.Object的一个方法，它的设计目的是保证对象在被垃圾收集前完成特定资源的回收。finalize 机制现在已经不推荐使用，并且在 JDK 9 开始被标记为deprecated。</li></ol><p><strong>作用</strong>：</p><ol><li>final可以在某些场景中提高程序的性能。</li><li>finally用于关闭连接等资源</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">  System.exit(<span class="number">1</span>);</span><br><span class="line">&#125; <span class="keyword">finally</span>&#123;</span><br><span class="line">  System.out.println(“Print from <span class="keyword">finally</span>”);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// finally中的代码不会执行</span></span><br></pre></td></tr></table></figure><ol start="3"><li>finalize的执行与垃圾收集关联在一起</li></ol><p><strong>注意</strong>：</p><ol><li>final不等同于immutable（不可改变）</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">final</span> List&lt;String&gt; strList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"> strList.add(<span class="string">"Hello"</span>);</span><br><span class="line"> strList.add(<span class="string">"world"</span>);  </span><br><span class="line"> List&lt;String&gt; unmodifiableStrList = List.of(<span class="string">"hello"</span>, <span class="string">"world"</span>);</span><br><span class="line"> unmodifiableStrList.add(<span class="string">"again"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// final只能约束strList不能被赋值，但是strList对象的行为不被约束</span></span><br></pre></td></tr></table></figure><ol start="2"><li>不要在finally中使用return语句</li><li>可以使用 java.lang.ref.Cleaner 取代 finalize 实现</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;strong&gt;Java笔记: final、finally、finalize有什么不同&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;final可用来修饰类、变量和方法。&lt;/p&gt;
-&lt;p&gt;final修饰类表示这个类不能继承；&lt;/p&gt;
-&lt;p&gt;final修饰变量代表该变量不能
-      
-    
-    </summary>
-    
-      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 24 Swap Nodes in Pairs</title>
-    <link href="https://roychengc.github.io/2019/03/26/leetcode-24-Swap-Nodes-in-Pairs/"/>
-    <id>https://roychengc.github.io/2019/03/26/leetcode-24-Swap-Nodes-in-Pairs/</id>
-    <published>2019-03-26T14:02:52.000Z</published>
-    <updated>2019-03-26T15:00:06.622Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="24-Swap-Nodes-in-Pairs"><a href="#24-Swap-Nodes-in-Pairs" class="headerlink" title="24. Swap Nodes in Pairs"></a><a href="https://leetcode-cn.com/problems/swap-nodes-in-pairs/" target="_blank" rel="noopener">24. Swap Nodes in Pairs</a></h4><p>Given a linked list, swap every two adjacent nodes and return its head.</p><p>You may <strong>not</strong> modify the values in the list’s nodes, only nodes itself may be changed.</p><p>给你一个链表，交换每两个相邻的节点（两个节点一对，一对一对交换）。</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Given 1-&gt;2-&gt;3-&gt;4, you should return the list as 2-&gt;1-&gt;4-&gt;3.</span><br></pre></td></tr></table></figure><p><strong>思路</strong>：</p><p>就是普通的交换两个节点，但是要注意一对节点中的第二个节点与下一对节点的第一个节点的连接关系。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        ListNode* res = <span class="keyword">new</span> ListNode(<span class="number">-1</span>);</span><br><span class="line">        ListNode* cur = res;</span><br><span class="line">        res-&gt;next = head;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (cur-&gt;next != <span class="literal">NULL</span> &amp;&amp; cur-&gt;next-&gt;next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">            ListNode* temp = cur-&gt;next-&gt;next;</span><br><span class="line">            cur-&gt;next-&gt;next = temp-&gt;next;</span><br><span class="line">            temp-&gt;next = cur-&gt;next;</span><br><span class="line">            cur-&gt;next = temp;</span><br><span class="line">            cur = temp-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>进阶</strong>：</p><p>以下内容出自<a href="http://www.cnblogs.com/grandyang/p/4441680.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4441680.html</a></p><p>这题还可以使用递归方法，利用了回溯的思想，递归遍历到链表末尾，然后先交换末尾两个，然后依次往前交换。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">swapPairs</span><span class="params">(ListNode* head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!head || !head-&gt;next) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode *t = head-&gt;next;</span><br><span class="line">        head-&gt;next = swapPairs(head-&gt;next-&gt;next);</span><br><span class="line">        t-&gt;next = head;</span><br><span class="line">        <span class="keyword">return</span> t;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;24-Swap-Nodes-in-Pairs&quot;&gt;&lt;a href=&quot;#24-Swap-Nodes-in-Pairs&quot; class=&quot;headerlink&quot; title=&quot;24. Swap Nodes in Pairs&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://le
-      
-    
-    </summary>
-    
-      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
-    
-    
-      <category term="链表" scheme="https://roychengc.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="递归" scheme="https://roychengc.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode-23 Merge K Sorted Lists</title>
-    <link href="https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/"/>
-    <id>https://roychengc.github.io/2019/03/24/leetcode-23-Merge-K-Sorted-Lists/</id>
-    <published>2019-03-24T15:32:16.000Z</published>
-    <updated>2019-03-25T13:03:32.158Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a></h4><p>Merge <em>k</em> sorted linked lists and return it as one sorted list. Analyze and describe its complexity.</p><p>合并k个有序链表，返回一个排好序的链表。</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line">Output: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure><p><strong>思路：</strong></p><p>把k个链表中的元素一一取出，并将它们放入一个vector中，之后对vector进行排序。最后将排序好的vector转化成链表即可。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec;</span><br><span class="line">        <span class="keyword">int</span> n = lists.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">            ListNode* node = lists[i];</span><br><span class="line">            <span class="keyword">while</span> (node != <span class="literal">NULL</span>) &#123;</span><br><span class="line">                vec.push_back(node-&gt;val);</span><br><span class="line">                node = node-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(vec.begin(), vec.end());</span><br><span class="line">        <span class="function">ListNode <span class="title">head</span><span class="params">(<span class="number">0</span>)</span></span>;</span><br><span class="line">        ListNode* result = &amp;head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; (<span class="keyword">int</span>)vec.size(); ++i) &#123;</span><br><span class="line">            ListNode* temp = <span class="keyword">new</span> ListNode(vec[i]);</span><br><span class="line">            result-&gt;next = temp;</span><br><span class="line">            result = result-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> head.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>进阶：</strong></p><p>以下出自<a href="http://www.cnblogs.com/grandyang/p/4606710.html" target="_blank" rel="noopener">http://www.cnblogs.com/grandyang/p/4606710.html</a></p><p>之前有一道合并两个有序链表链表的题目（<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/" target="_blank" rel="noopener">21. Merge Two Sorted Lists</a>），我们同样可以通过两两合并来解决这道问题，但是这样做时间复杂度太高。</p><p>我们可以通过最小堆解决这个问题。首先把k个链表的首元素都加入最小堆中，它们会自动排好序。然后我们每次取出最小的那个元素加入我们最终结果的链表中，然后把取出元素的下一个元素再加入堆中，下次仍从堆中取出最小的元素做相同的操作，以此类推，直到堆中没有元素了，此时k个链表也合并为了一个链表，返回首节点即可。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">mergeKLists</span><span class="params">(<span class="built_in">vector</span>&lt;ListNode*&gt;&amp; lists)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> cmp = [](ListNode*&amp; a, ListNode*&amp; b) &#123;</span><br><span class="line">            <span class="keyword">return</span> a-&gt;val &gt; b-&gt;val;</span><br><span class="line">        &#125;;</span><br><span class="line">        priority_queue&lt;ListNode*, <span class="built_in">vector</span>&lt;ListNode*&gt;, <span class="keyword">decltype</span>(cmp) &gt; q(cmp);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> node : lists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (node) q.push(node);</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> ListNode(<span class="number">-1</span>), *cur = dummy;</span><br><span class="line">        <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> t = q.top(); q.pop();</span><br><span class="line">            cur-&gt;next = t;</span><br><span class="line">            cur = cur-&gt;next;</span><br><span class="line">            <span class="keyword">if</span> (cur-&gt;next) q.push(cur-&gt;next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;23-Merge-k-Sorted-Lists&quot;&gt;&lt;a href=&quot;#23-Merge-k-Sorted-Lists&quot; class=&quot;headerlink&quot; title=&quot;23. Merge k Sorted Lists&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https:/
-      
-    
-    </summary>
-    
-      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
-    
-    
-      <category term="链表" scheme="https://roychengc.github.io/tags/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="排序" scheme="https://roychengc.github.io/tags/%E6%8E%92%E5%BA%8F/"/>
-    
-      <category term="堆" scheme="https://roychengc.github.io/tags/%E5%A0%86/"/>
     
   </entry>
   

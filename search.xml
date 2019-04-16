@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Java笔记: 如何保证容器是线程安全的]]></title>
+    <url>%2F2019%2F04%2F16%2FJava%E7%AC%94%E8%AE%B0-%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E5%AE%B9%E5%99%A8%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%2F</url>
+    <content type="text"><![CDATA[如何保证容器是线程安全的基本知识Java 提供了不同层面的线程安全支持。在传统集合中，除了 Hashtable 等同步容器，还提供了同步包装器，我们可以调用 Collections 工具类提供的包装方法，来获取一个同步的包装容器，但是它们都是非常粗的同步方式，性能较低下。 更常见的选择是使用线程安全容器类，它提供了： 各种并发容器，如 ConcurrentHashMap、CopyOnWriteArrayList 各种线程安全队列，如 ArrayBlockingQueue、SynchronousQueue 各种有序容器的线程安全版本等 总的来说，保证线程安全的方式有简单的 synchronize 方式，还有更加精细的 ConcurrentHashMap 等并发实现等。不过，并发包内提供的容器远优于简单的同步实现。 . 知识扩展1.为什么需要 ConcurrentHashMap 因为 Hashtable 比较低效，它的实现基本只是将 put、get 等方法加上 synchronized。这就导致了所有并发操作都要竞争同一把锁，一个线程在进行同步操作时，其他线程只能等待，因此效率低下。 2.ConcurrentHashMap 分析 ConcurrentHashMap 的设计实现一直在演化，早期的 ConcurrentHashMap，其实现是基于： 分离锁，即将内部进行分段，里面则是 HashEntry 数组，和 HashMap 类似，哈希相同的数据也是以链表形式存储 HashEntry 内部使用 volatile 的 value 字段来保证可见性，也利用了不可变对象的机制以改进利用 Unsafe 提供的底层能力，直接完成部分操作，以最优化性能 下面是早期 ConcurrentHashMap 内部结构的示意图，核心是利用分段设计，在进行并发操作的时候，只需要锁定相应段，这样就有效避免了类似 Hashtable 整体同步的问题，大大提高了性能。]]></content>
+      <categories>
+        <category>Java笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 46 Permutations]]></title>
+    <url>%2F2019%2F04%2F16%2Fleetcode-46-Permutations%2F</url>
+    <content type="text"><![CDATA[46. PermutationsGiven a collection of distinct integers, return all possible permutations. Example: 12345678910Input: [1,2,3]Output:[ [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], [3,2,1]] 给你一个没有重复数字的数组，返回所有可能的排列。 思路使用递归 + 回溯的方法，每次递归从数组 nums 里面取一个数字添加到一个解 list 中，并把这个数字从数组里删除。回溯时把第 n 次递归删除的数添加进数组 nums 里，再把 list 中最后一个元素删除。 12345678910111213141516171819202122232425262728class Solution &#123; public void generate(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, List&lt;Integer&gt; nums) &#123; if (nums.size() == 0) &#123; result.add(new ArrayList&lt;&gt;(list)); return; &#125; for (int i = 0; i &lt; nums.size(); ++i) &#123; int temp = nums.get(i); nums.remove(i); list.add(temp); generate(result, list, nums); list.remove(list.size() - 1); nums.add(i, temp); // 添加回删除的元素 &#125; &#125; public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); List&lt;Integer&gt; n = new ArrayList&lt;&gt;(); for (int num : nums) &#123; n.add(num); &#125; generate(result, list, n); return result; &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[leetcode 47 Permutations II]]></title>
+    <url>%2F2019%2F04%2F16%2Fleetcode-47-Permutations-II%2F</url>
+    <content type="text"><![CDATA[47. Permutations IIGiven a collection of numbers that might contain duplicates, return all possible unique permutations. Example: 1234567Input: [1,1,2]Output:[ [1,1,2], [1,2,1], [2,1,1]] 给你一个可能存在重复数字的数组，求出所有可能的排列。 思路这题与46. Permutations解法相似，区别在于这题的数组中可能存在重复数字，因此我们要考虑去重的问题。我们把题目所给的数组先从小到大排序，然后在执行递归函数之前判断 nums[i] 与 nums[i - 1] 是否相等，如果相等，continue 循环。 123456789101112131415161718192021222324252627282930313233class Solution &#123; public void generate(List&lt;List&lt;Integer&gt;&gt; result, List&lt;Integer&gt; list, List&lt;Integer&gt; nums) &#123; if (nums.size() == 0) &#123; result.add(new ArrayList&lt;&gt;(list)); return; &#125; for (int i = 0; i &lt; nums.size(); ++i) &#123; if (i &gt; 0 &amp;&amp; nums.get(i) == nums.get(i - 1)) continue; // 去重 int temp = nums.get(i); nums.remove(i); list.add(temp); generate(result, list, nums); list.remove(list.size() - 1); nums.add(i, temp); // 添加回删除的元素 &#125; &#125; public List&lt;List&lt;Integer&gt;&gt; permuteUnique(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); List&lt;Integer&gt; temp = new ArrayList&lt;&gt;(); List&lt;Integer&gt; list = new ArrayList&lt;&gt;(); Arrays.sort(nums); for (int i = 0; i &lt; nums.length; ++i) &#123; list.add(nums[i]); &#125; generate(result, temp, list); return result; &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>递归</tag>
+        <tag>回溯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode 345 Reverse Vowels of a String]]></title>
     <url>%2F2019%2F04%2F13%2Fleetcode-345-Reverse-Vowels-of-a-String%2F</url>
     <content type="text"><![CDATA[345. Reverse Vowels of a StringWrite a function that takes a string as input and reverse only the vowels of a string. Example 1: 12Input: &quot;hello&quot;Output: &quot;holle&quot; Example 2: 12Input: &quot;leetcode&quot;Output: &quot;leotcede&quot; Note:The vowels does not include the letter “y”. 反转一个字符串中的元音字母。 思路使用双指针法，创建两个指针 low 和 high 分别指向 0 和 s.length() - 1，然后创建一个新的字符数组 result，通过遍历，如果 s[low] 和 s[high] 都是元音，result[low++] = s[high]，result[high- -] = s[low]；如果 s[low] 或 s[high] 不是元音，则 result[low++] = s[low]，result[high- -] = s[high]。 12345678910111213141516171819202122232425class Solution &#123; public boolean isVowel(char c) &#123; return c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U'; &#125; public String reverseVowels(String s) &#123; int low = 0; int high = s.length() - 1; char[] result = new char[s.length()]; while (low &lt;= high) &#123; char a = s.charAt(low); char b = s.charAt(high); if (!isVowel(a)) result[low++] = a; else if (!isVowel(b)) result[high--] = b; else &#123; result[low++] = b; result[high--] = a; &#125; &#125; return new String(result); &#125;&#125;]]></content>
@@ -196,8 +228,8 @@
         <category>leetcode</category>
       </categories>
       <tags>
-        <tag>链表</tag>
         <tag>排序</tag>
+        <tag>链表</tag>
         <tag>堆</tag>
       </tags>
   </entry>
