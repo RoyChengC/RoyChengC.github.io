@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-17T15:08:39.823Z</updated>
+  <updated>2019-04-19T13:22:57.164Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 31 Next Permutation</title>
+    <link href="https://roychengc.github.io/2019/04/19/leetcode-31-Next-Permutation/"/>
+    <id>https://roychengc.github.io/2019/04/19/leetcode-31-Next-Permutation/</id>
+    <published>2019-04-19T13:16:43.000Z</published>
+    <updated>2019-04-19T13:22:57.164Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="31-Next-Permutation"><a href="#31-Next-Permutation" class="headerlink" title="31. Next Permutation"></a><a href="https://leetcode-cn.com/problems/next-permutation/" target="_blank" rel="noopener">31. Next Permutation</a></h4><p>Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers.</p><p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p><p>The replacement must be <strong>in-place</strong> and use only constant extra memory.</p><p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,2,3 → 1,3,2</span><br><span class="line">3,2,1 → 1,2,3</span><br><span class="line">1,1,5 → 1,5,1</span><br></pre></td></tr></table></figure><p>求一个数组的下一个更大的排列，如果不存在更大的，重新排列成最小的排列。只允许常数额外空间。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从数组后面往前遍历，找到第一个比前面一个小的数，记下该数的下标 pos，再从该下标从前往后遍历，找到刚好大于这个数的数，并与它交换。最后把下标为 pos 后的数反转。</p><p><img src="https://leetcode-cn.com/media/original_images/31/31_Next_Permutation.gif" alt="Next Permutation"></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i + <span class="number">1</span>] &gt; nums[i]) &#123;</span><br><span class="line">                pos = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (pos == -<span class="number">1</span>) &#123;</span><br><span class="line">            Arrays.sort(nums);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//交换</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos + <span class="number">1</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="comment">// 要交换的数距离末尾2</span></span><br><span class="line">            <span class="keyword">if</span> (i + <span class="number">1</span> == nums.length &amp;&amp; nums[i] &gt; nums[pos]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">                nums[i] = nums[pos];</span><br><span class="line">                nums[pos] = temp;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &lt;= nums[pos]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i - <span class="number">1</span>];</span><br><span class="line">                nums[i - <span class="number">1</span>] = nums[pos];</span><br><span class="line">                nums[pos] = temp;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//反转</span></span><br><span class="line">        <span class="keyword">int</span> low = pos + <span class="number">1</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = nums[low];</span><br><span class="line">            nums[low] = nums[high];</span><br><span class="line">            nums[high] = temp;</span><br><span class="line">            low++;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;31-Next-Permutation&quot;&gt;&lt;a href=&quot;#31-Next-Permutation&quot; class=&quot;headerlink&quot; title=&quot;31. Next Permutation&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Java笔记: Java提供了哪些IO方式</title>
@@ -476,29 +499,6 @@
       
       
         &lt;h3 id=&quot;强引用、软引用、弱引用、幻象引用有什么区别&quot;&gt;&lt;a href=&quot;#强引用、软引用、弱引用、幻象引用有什么区别&quot; class=&quot;headerlink&quot; title=&quot;强引用、软引用、弱引用、幻象引用有什么区别&quot;&gt;&lt;/a&gt;强引用、软引用、弱引用、幻象引用有什么区别&lt;/
-      
-    
-    </summary>
-    
-      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java笔记: 对Java平台的理解</title>
-    <link href="https://roychengc.github.io/2019/03/29/Java%E7%AC%94%E8%AE%B0-%E5%AF%B9Java%E5%B9%B3%E5%8F%B0%E7%9A%84%E7%90%86%E8%A7%A3/"/>
-    <id>https://roychengc.github.io/2019/03/29/Java笔记-对Java平台的理解/</id>
-    <published>2019-03-29T11:57:35.000Z</published>
-    <updated>2019-03-29T12:17:59.593Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="对Java平台的理解"><a href="#对Java平台的理解" class="headerlink" title="对Java平台的理解"></a>对Java平台的理解</h4><p>Java 最显著的特性有两个方面，一个是“书写一次，到处运行”，即 Java 拥有跨平台的能力；第二个是垃圾收集机制（GC），Java 通过垃圾收集器回收和分配内存。</p><p>我们经常见到 JDK 和 JRE，JRE（Java Runtime Environment）是 Java 运行环境，它包含了 JVM 和 Java 类库等；JDK 提供了更多工具，如编译器和诊断工具。</p><h4 id="Java-是解释执行的吗"><a href="#Java-是解释执行的吗" class="headerlink" title="Java 是解释执行的吗"></a>Java 是解释执行的吗</h4><p>这个说法不太准确。我们编写的 Java 源码首先通过 Javac 编译成字节码，然后在运行时通过 Java 虚拟机内嵌的解释器将字节码转换成最终的机器码。Java 通过字节码和 Java 虚拟机这种跨平台的抽象，屏蔽了操作系统和硬件的细节，这是“书写一次，到处运行”的基础。</p><p>但是常见的 JVM 都提供了 JIT（Just-In-Time）编译器，即动态编译器，JIT 能够在运行是将热点代码编译成机器码，这种情况就是编译执行。</p><h4 id="Java-知识扩展"><a href="#Java-知识扩展" class="headerlink" title="Java 知识扩展"></a>Java 知识扩展</h4><p><img src="https://static001.geekbang.org/resource/image/20/32/20bc6a900fc0b829c2f0e723df050732.png" alt="img"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;对Java平台的理解&quot;&gt;&lt;a href=&quot;#对Java平台的理解&quot; class=&quot;headerlink&quot; title=&quot;对Java平台的理解&quot;&gt;&lt;/a&gt;对Java平台的理解&lt;/h4&gt;&lt;p&gt;Java 最显著的特性有两个方面，一个是“书写一次，到处运行”，即 Java
       
     
     </summary>
