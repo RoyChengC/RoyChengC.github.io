@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[leetcode 49 Group Anagrams]]></title>
+    <url>%2F2019%2F04%2F21%2Fleetcode-49-Group-Anagrams%2F</url>
+    <content type="text"><![CDATA[49. Group AnagramsGiven an array of strings, group anagrams together. Example: 1234567Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],Output:[ [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;], [&quot;nat&quot;,&quot;tan&quot;], [&quot;bat&quot;]] Note: All inputs will be in lowercase. The order of your output does not matter. 给你一组字符串，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。 思路分析题意，如果将错位词的字符顺序重新排列，会得到同样的结果。那么可以考虑使用一个 map，map 的 key 代表了重新排列顺序后的错位词，将所有错位词都保存到一个字符串数组中，建立key和字符串数组之间的一一对应关系。 1234567891011121314151617181920212223class Solution &#123; public List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123; Map&lt;String, List&lt;String&gt;&gt; map = new HashMap&lt;&gt;(); List&lt;String&gt; temp; for (int i = 0; i &lt; strs.length; ++i) &#123; String s = strs[i]; char[] ch = s.toCharArray(); Arrays.sort(ch); s = new String(ch); if (map.get(s) != null) &#123; map.get(s).add(strs[i]); &#125; else &#123; temp = new ArrayList&lt;&gt;(); temp.add(strs[i]); map.put(s, temp); &#125; &#125; return new ArrayList&lt;&gt;(map.values()); &#125;&#125;]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>哈希表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java笔记: 接口和抽象类有什么区别]]></title>
+    <url>%2F2019%2F04%2F21%2FJava%E7%AC%94%E8%AE%B0-%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[接口和抽象类有什么区别基本知识接口和抽象类是 Java 面向对象设计的两个基础机制。 接口是对行为的抽象，它是抽象方法的集合，利用接口可以使 API 定义和实现分离的目的。另外，接口不能实例化，不能包含任何非常量成员，同时没有非静态方法实现，也就是受要么是抽象方法，要么是静态方法。 抽象类同样不能实例化，用 abstract 关键字修饰，其目的主要是通过继承的方式达到代码重用。除了不能实例化外，形式上和一般的 Java 类并没有太大区别，它可以包含一个或多个抽象方法，也可以没有抽象方法。 Java 类实现接口使用 implements 关键词，继承抽象类使用 extends关键词。 Java 不支持多继承，但是可以实现多个接口，因为接口是抽象方法的集合，所以这是声明性的，但不能通过扩展多个抽象类来重用逻辑。 为接口添加任何抽象方法，相应的所有实现了这个接口的类，也必须实现新增方法；对于抽象类，添加非抽象方法，其子类只会享受到能力扩展，而不用担心编译出问题。 知识扩展1.面向对象设计 面向对象的基本要素：封装、继承、多态。 封装是为了隐藏事物内部的实现细节，从而提高安全性并简化编程。封装避免外部调用者接触到内部的细节。 继承是代码复用的基础。继承可以看作是非常高耦合的一种关系，父类代码修改后子类的行为会发生变动。在实践中过度滥用继承可能会起到反效果。 多态，大家可能会联想到重写（override）和重载（overload）、向上转型。重写是父类和子类中相同名字和参数的方法，实现过程不同；重载是相同名字的方法，但是参数不同。 1234567891011public int doSomething() &#123; return 0;&#125;// 输入参数不同，意味着方法签名不同，重载的体现public int doSomething(List&lt;String&gt; strs) &#123; return 0;&#125;// return 类型不一样，编译不能通过public short doSomething() &#123; return 0;&#125;]]></content>
+      <categories>
+        <category>Java笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[杂记: 常见的HTTP Method]]></title>
     <url>%2F2019%2F04%2F20%2F%E6%9D%82%E8%AE%B0-%E5%B8%B8%E8%A7%81%E7%9A%84HTTP-Method%2F</url>
     <content type="text"><![CDATA[常见的HTTP MethodGET通常用于请求服务器发送某个资源。 PUT向服务器写入文档。 PUT 方法的语义就是让服务器用请求的主体部分来创建一个由所请求的 URL 命名的新文档，如果那个 URL 已经存在，就用这个主体来替代它。 和 POST 方法一样，PUT 方法改变了资源的状态，所以是非安全的。 POSTPOST 方法起初是用来向服务器输入数据的。实际上，通常会用它来支持 HTML 的表单。表单中填好的数据通常会被送到服务器，然后由服务器将其发送到它要去的地方。 DELETEDELETE 方法所做的事情就是请服务器删除请求 URL 所指定的资源。但是，客户端应用程序无法保证删除操作一定会被执行。因为 HTTP 规范允许服务器在不通知客户端的情况下撤销请求。和 POST 方法一样，DELETE 方法也改变了资源的状态，所以是非安全的。]]></content>

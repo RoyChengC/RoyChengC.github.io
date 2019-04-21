@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="哈希表,">
 
 
 
@@ -88,19 +88,18 @@
 
 
 
-<meta name="description" content="31. Next PermutationImplement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
+<meta name="description" content="49. Group AnagramsGiven an array of strings, group anagrams together. Example: 1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],Outp">
+<meta name="keywords" content="哈希表">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 31 Next Permutation">
-<meta property="og:url" content="https://roychengc.github.io/2019/04/19/leetcode-31-Next-Permutation/index.html">
+<meta property="og:title" content="leetcode 49 Group Anagrams">
+<meta property="og:url" content="https://roychengc.github.io/2019/04/21/leetcode-49-Group-Anagrams/index.html">
 <meta property="og:site_name" content="Roy Cheng 的博客">
-<meta property="og:description" content="31. Next PermutationImplement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
+<meta property="og:description" content="49. Group AnagramsGiven an array of strings, group anagrams together. Example: 1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],Outp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://leetcode-cn.com/media/original_images/31/31_Next_Permutation.gif">
-<meta property="og:updated_time" content="2019-04-19T13:22:57.164Z">
+<meta property="og:updated_time" content="2019-04-21T15:16:59.844Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 31 Next Permutation">
-<meta name="twitter:description" content="31. Next PermutationImplement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers. If such arrangement is not possible, it must rearrange it as th">
-<meta name="twitter:image" content="https://leetcode-cn.com/media/original_images/31/31_Next_Permutation.gif">
+<meta name="twitter:title" content="leetcode 49 Group Anagrams">
+<meta name="twitter:description" content="49. Group AnagramsGiven an array of strings, group anagrams together. Example: 1234567Input: [&amp;quot;eat&amp;quot;, &amp;quot;tea&amp;quot;, &amp;quot;tan&amp;quot;, &amp;quot;ate&amp;quot;, &amp;quot;nat&amp;quot;, &amp;quot;bat&amp;quot;],Outp">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="https://roychengc.github.io/2019/04/19/leetcode-31-Next-Permutation/">
+  <link rel="canonical" href="https://roychengc.github.io/2019/04/21/leetcode-49-Group-Anagrams/">
 
 
 
 
 
-  <title>leetcode 31 Next Permutation | Roy Cheng 的博客</title>
+  <title>leetcode 49 Group Anagrams | Roy Cheng 的博客</title>
   
 
 
@@ -307,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/04/19/leetcode-31-Next-Permutation/">
+    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/04/21/leetcode-49-Group-Anagrams/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Roy Cheng">
@@ -324,7 +323,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode 31 Next Permutation</h1>
+          <h1 class="post-title" itemprop="name headline">leetcode 49 Group Anagrams</h1>
         
 
         <div class="post-meta">
@@ -336,8 +335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T21:16:43+08:00">
-                2019-04-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-21T23:10:58+08:00">
+                2019-04-21
               </time>
             
 
@@ -376,7 +375,7 @@
 
           
           
-             <span id="/2019/04/19/leetcode-31-Next-Permutation/" class="leancloud_visitors" data-flag-title="leetcode 31 Next Permutation">
+             <span id="/2019/04/21/leetcode-49-Group-Anagrams/" class="leancloud_visitors" data-flag-title="leetcode 49 Group Anagrams">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -401,7 +400,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  345
+                  291
                 </span>
               
 
@@ -438,15 +437,17 @@
       
 
       
-        <h4 id="31-Next-Permutation"><a href="#31-Next-Permutation" class="headerlink" title="31. Next Permutation"></a><a href="https://leetcode-cn.com/problems/next-permutation/" target="_blank" rel="noopener">31. Next Permutation</a></h4><p>Implement <strong>next permutation</strong>, which rearranges numbers into the lexicographically next greater permutation of numbers.</p>
-<p>If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).</p>
-<p>The replacement must be <strong>in-place</strong> and use only constant extra memory.</p>
-<p>Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1,2,3 → 1,3,2</span><br><span class="line">3,2,1 → 1,2,3</span><br><span class="line">1,1,5 → 1,5,1</span><br></pre></td></tr></table></figure>
-<p>求一个数组的下一个更大的排列，如果不存在更大的，重新排列成最小的排列。只允许常数额外空间。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>从数组后面往前遍历，找到第一个比前面一个小的数，记下该数的下标 pos，再从该下标从前往后遍历，找到刚好大于这个数的数，并与它交换。最后把下标为 pos 后的数反转。</p>
-<p><img src="https://leetcode-cn.com/media/original_images/31/31_Next_Permutation.gif" alt="Next Permutation"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">nextPermutation</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pos = -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = nums.length - <span class="number">2</span>; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i + <span class="number">1</span>] &gt; nums[i]) &#123;</span><br><span class="line">                pos = i;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (pos == -<span class="number">1</span>) &#123;</span><br><span class="line">            Arrays.sort(nums);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//交换</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pos + <span class="number">1</span>; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            <span class="comment">// 要交换的数距离末尾2</span></span><br><span class="line">            <span class="keyword">if</span> (i + <span class="number">1</span> == nums.length &amp;&amp; nums[i] &gt; nums[pos]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i];</span><br><span class="line">                nums[i] = nums[pos];</span><br><span class="line">                nums[pos] = temp;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] &lt;= nums[pos]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = nums[i - <span class="number">1</span>];</span><br><span class="line">                nums[i - <span class="number">1</span>] = nums[pos];</span><br><span class="line">                nums[pos] = temp;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//反转</span></span><br><span class="line">        <span class="keyword">int</span> low = pos + <span class="number">1</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = nums[low];</span><br><span class="line">            nums[low] = nums[high];</span><br><span class="line">            nums[high] = temp;</span><br><span class="line">            low++;</span><br><span class="line">            high--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h4 id="49-Group-Anagrams"><a href="#49-Group-Anagrams" class="headerlink" title="49. Group Anagrams"></a><a href="https://leetcode-cn.com/problems/group-anagrams/" target="_blank" rel="noopener">49. Group Anagrams</a></h4><p>Given an array of strings, group anagrams together.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ul>
+<li>All inputs will be in lowercase.</li>
+<li>The order of your output does not matter.</li>
+</ul>
+<p>给你一组字符串，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>分析题意，如果将错位词的字符顺序重新排列，会得到同样的结果。那么可以考虑使用一个 map，map 的 key 代表了重新排列顺序后的错位词，将所有错位词都保存到一个字符串数组中，建立key和字符串数组之间的一一对应关系。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</span><br><span class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; ++i) &#123;</span><br><span class="line">            String s = strs[i];</span><br><span class="line">            <span class="keyword">char</span>[] ch = s.toCharArray();</span><br><span class="line">            Arrays.sort(ch);</span><br><span class="line">            s = <span class="keyword">new</span> String(ch);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (map.get(s) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                map.get(s).add(strs[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                temp.add(strs[i]);</span><br><span class="line">                map.put(s, temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(map.values());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -462,6 +463,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/哈希表/" rel="tag"># 哈希表</a>
+          
+        </div>
+      
 
       
       
@@ -471,8 +478,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/17/Java笔记-Java提供了哪些IO方式/" rel="next" title="Java笔记: Java提供了哪些IO方式">
-                <i class="fa fa-chevron-left"></i> Java笔记: Java提供了哪些IO方式
+              <a href="/2019/04/21/Java笔记-接口和抽象类有什么区别/" rel="next" title="Java笔记: 接口和抽象类有什么区别">
+                <i class="fa fa-chevron-left"></i> Java笔记: 接口和抽象类有什么区别
               </a>
             
           </div>
@@ -480,10 +487,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/20/杂记-常见的HTTP-Method/" rel="prev" title="杂记: 常见的HTTP Method">
-                杂记: 常见的HTTP Method <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -640,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#31-Next-Permutation"><span class="nav-number">1.</span> <span class="nav-text">31. Next Permutation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#49-Group-Anagrams"><span class="nav-number">1.</span> <span class="nav-text">49. Group Anagrams</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></div>
             
 
           </div>

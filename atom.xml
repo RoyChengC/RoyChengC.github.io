@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-20T15:29:30.148Z</updated>
+  <updated>2019-04-21T15:16:59.844Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>leetcode 49 Group Anagrams</title>
+    <link href="https://roychengc.github.io/2019/04/21/leetcode-49-Group-Anagrams/"/>
+    <id>https://roychengc.github.io/2019/04/21/leetcode-49-Group-Anagrams/</id>
+    <published>2019-04-21T15:10:58.000Z</published>
+    <updated>2019-04-21T15:16:59.844Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="49-Group-Anagrams"><a href="#49-Group-Anagrams" class="headerlink" title="49. Group Anagrams"></a><a href="https://leetcode-cn.com/problems/group-anagrams/" target="_blank" rel="noopener">49. Group Anagrams</a></h4><p>Given an array of strings, group anagrams together.</p><p><strong>Example:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [&quot;eat&quot;, &quot;tea&quot;, &quot;tan&quot;, &quot;ate&quot;, &quot;nat&quot;, &quot;bat&quot;],</span><br><span class="line">Output:</span><br><span class="line">[</span><br><span class="line">  [&quot;ate&quot;,&quot;eat&quot;,&quot;tea&quot;],</span><br><span class="line">  [&quot;nat&quot;,&quot;tan&quot;],</span><br><span class="line">  [&quot;bat&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure><p><strong>Note:</strong></p><ul><li>All inputs will be in lowercase.</li><li>The order of your output does not matter.</li></ul><p>给你一组字符串，将字母异位词组合在一起。字母异位词指字母相同，但排列不同的字符串。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>分析题意，如果将错位词的字符顺序重新排列，会得到同样的结果。那么可以考虑使用一个 map，map 的 key 代表了重新排列顺序后的错位词，将所有错位词都保存到一个字符串数组中，建立key和字符串数组之间的一一对应关系。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; groupAnagrams(String[] strs) &#123;</span><br><span class="line">        Map&lt;String, List&lt;String&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        </span><br><span class="line">        List&lt;String&gt; temp;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strs.length; ++i) &#123;</span><br><span class="line">            String s = strs[i];</span><br><span class="line">            <span class="keyword">char</span>[] ch = s.toCharArray();</span><br><span class="line">            Arrays.sort(ch);</span><br><span class="line">            s = <span class="keyword">new</span> String(ch);</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (map.get(s) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                map.get(s).add(strs[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                temp = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">                temp.add(strs[i]);</span><br><span class="line">                map.put(s, temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ArrayList&lt;&gt;(map.values());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;49-Group-Anagrams&quot;&gt;&lt;a href=&quot;#49-Group-Anagrams&quot; class=&quot;headerlink&quot; title=&quot;49. Group Anagrams&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode-cn.com/p
+      
+    
+    </summary>
+    
+      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
+    
+    
+      <category term="哈希表" scheme="https://roychengc.github.io/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java笔记: 接口和抽象类有什么区别</title>
+    <link href="https://roychengc.github.io/2019/04/21/Java%E7%AC%94%E8%AE%B0-%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+    <id>https://roychengc.github.io/2019/04/21/Java笔记-接口和抽象类有什么区别/</id>
+    <published>2019-04-21T14:12:15.000Z</published>
+    <updated>2019-04-21T14:31:07.925Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="接口和抽象类有什么区别"><a href="#接口和抽象类有什么区别" class="headerlink" title="接口和抽象类有什么区别"></a>接口和抽象类有什么区别</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>接口和抽象类是 Java 面向对象设计的两个基础机制。</p><p>接口是对行为的抽象，它是抽象方法的集合，利用接口可以使 API 定义和实现分离的目的。另外，接口不能实例化，不能包含任何非常量成员，同时没有非静态方法实现，也就是受要么是抽象方法，要么是静态方法。</p><p>抽象类同样不能实例化，用 abstract 关键字修饰，其目的主要是通过继承的方式达到代码重用。除了不能实例化外，形式上和一般的 Java 类并没有太大区别，它可以包含一个或多个抽象方法，也可以没有抽象方法。</p><p>Java 类实现接口使用 implements 关键词，继承抽象类使用 extends关键词。</p><p>Java 不支持多继承，但是可以实现多个接口，因为接口是抽象方法的集合，所以这是声明性的，但不能通过扩展多个抽象类来重用逻辑。</p><p>为接口添加任何抽象方法，相应的所有实现了这个接口的类，也必须实现新增方法；对于抽象类，添加非抽象方法，其子类只会享受到能力扩展，而不用担心编译出问题。</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.面向对象设计</strong></p><p>面向对象的基本要素：封装、继承、多态。</p><p>封装是为了隐藏事物内部的实现细节，从而提高安全性并简化编程。封装避免外部调用者接触到内部的细节。</p><p>继承是代码复用的基础。继承可以看作是非常高耦合的一种关系，父类代码修改后子类的行为会发生变动。在实践中过度滥用继承可能会起到反效果。</p><p>多态，大家可能会联想到重写（override）和重载（overload）、向上转型。重写是父类和子类中相同名字和参数的方法，实现过程不同；重载是相同名字的方法，但是参数不同。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 输入参数不同，意味着方法签名不同，重载的体现</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">doSomething</span><span class="params">(List&lt;String&gt; strs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// return 类型不一样，编译不能通过</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">short</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;接口和抽象类有什么区别&quot;&gt;&lt;a href=&quot;#接口和抽象类有什么区别&quot; class=&quot;headerlink&quot; title=&quot;接口和抽象类有什么区别&quot;&gt;&lt;/a&gt;接口和抽象类有什么区别&lt;/h3&gt;&lt;h4 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; class=&quot;
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>杂记: 常见的HTTP Method</title>
@@ -461,52 +509,6 @@
     
     
       <category term="双指针" scheme="https://roychengc.github.io/tags/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java笔记: int 和 Integer 的区别</title>
-    <link href="https://roychengc.github.io/2019/04/07/Java%E7%AC%94%E8%AE%B0-int-%E5%92%8C-Integer-%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
-    <id>https://roychengc.github.io/2019/04/07/Java笔记-int-和-Integer-的区别/</id>
-    <published>2019-04-07T14:42:25.000Z</published>
-    <updated>2019-04-08T13:49:07.781Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="int-和-Integer-有什么区别"><a href="#int-和-Integer-有什么区别" class="headerlink" title="int 和 Integer 有什么区别"></a>int 和 Integer 有什么区别</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>int 也就是整型数字，是 Java 的 8 个原始数据类型之一。Java 虽然号称一切都是对象，但原始数据类型是个例外。</p><p>Integer 是 int 对应的包装类，这个类中包含一个 int 类型的字段存储数据，并且提供了数学运算、int 和字符串之间的转换等基本操作。在 Java 5 中，提供了自动装箱和自动拆箱功能，Java 可以根据上下文，自动进行转换。</p><p>我们一般使用 new 关键字构建一个 Integer 对象，而大部分数据操作都是集中在有限的较小的数值范围，因此，Java 5 中新增了静态方法 valueOf，在调用它的时候会利用一个缓存机制。这个值默认缓存在 -128~127 之间。</p><p>.</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.自动装箱、自动拆箱</strong></p><p>自动装箱、自动拆箱其实是一种语法糖，即 Java 为我们自动进行了一些转换，保证不同的写法在运行时等价，它们发生在编译阶段，也就是生成的字节码是一致的。</p><p>javac 把自动装箱转换为 Integer.valueOf()，把拆箱转换为 Integer.intValue()。</p><p>在编程实践中，我们应避免不必要的装箱拆箱行为。因为 Integer 是一个对象，创建多个对象的开销是比创建多个整数的开销多的。</p><p><strong>2.原始类型线程安全</strong></p><p>原始数据类型的变量，显然要使用并发相关手段，才能保证线程安全。如果有线程安全的需要，建议使用类似 AtomicInteger、AtomicLong 这样的线程安全类。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;int-和-Integer-有什么区别&quot;&gt;&lt;a href=&quot;#int-和-Integer-有什么区别&quot; class=&quot;headerlink&quot; title=&quot;int 和 Integer 有什么区别&quot;&gt;&lt;/a&gt;int 和 Integer 有什么区别&lt;/h3&gt;&lt;h4 i
-      
-    
-    </summary>
-    
-      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Java笔记: String、StringBuffer、StringBuilder 有什么区别</title>
-    <link href="https://roychengc.github.io/2019/04/07/Java%E7%AC%94%E8%AE%B0-String%E3%80%81StringBuffer%E3%80%81StringBuilder-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
-    <id>https://roychengc.github.io/2019/04/07/Java笔记-String、StringBuffer、StringBuilder-有什么区别/</id>
-    <published>2019-04-07T11:40:15.000Z</published>
-    <updated>2019-04-07T12:59:21.592Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="String、StringBuffer、StringBuilder-有什么区别"><a href="#String、StringBuffer、StringBuilder-有什么区别" class="headerlink" title="String、StringBuffer、StringBuilder 有什么区别"></a>String、StringBuffer、StringBuilder 有什么区别</h3><p>.</p><h4 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h4><p><strong>String</strong>：在 Java 中，String 被声明为 final class，所有的属性也都是 final 的。由于 String 的不可变性，类似字符串的拼接、剪切等动作，都会产生新的 String 对象。而对字符串的操作是很普遍的，所以相关操作的效率会对应用性能有影响。</p><p><strong>StringBuffer</strong>：StringBuffer 是为了解决字符串拼接时产生的大量中间对象的问题而提供的一个类，具体的拼接方法有 append 和 add。StringBuffer 可以保证线程安全，但是也随之带来了额外的性能开销。所以除非有线程安全的需要，不然还是推荐使用 StringBuilder。</p><p><strong>StringBuilder</strong>：在功能上与 StringBuffer没有本质区别，但是它去除了线程安全部分，减小了开销，是绝大部分情况下进行字符串拼接的首选。</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.字符串设计和实现</strong></p><p>之前讲到 String 是 Immutable 类，它也能保证线程安全，因为你不能对它内部的数据进行任何修改。</p><p>再看 StringBuffer 类实现的一些细节，它的线程安全功能是通过把各种修改数据的方法都加上 synchronized 关键字实现的，非常简单粗暴。其实这样的实现方式非常适合我们常见的线程安全类的实现。</p><p>为了实现字符串的拼接，StringBuffer 和 StringBuilder 底层都是利用可修改的数组（char     类型，JDK9 以后是 byte）数组，两者都是继承自 AbstractStringBuilder，区别仅在于方法是否加了 synchronized。</p><p>这个可修改的数组目前的实现是，构建时初始字符串长度加16，也就是说如果没有构建对象时输入的字符串，那么初始值就是16。</p><p>在日常编程中，还是要保证代码的可读性、可维护性，这往往比最优性能更重要。</p><p>.</p><p><strong>2.字符串常量池</strong></p><p>在我们的日常编程中，String 的使用是很频繁的，Java 为了避免在一个系统中产生大量的 String 对象，引入了字符串常量池。在创建一个字符串时，首先检查常量池中是否有对应值的字符串对象，如果有则直接创建从池中查找到的对象引用，如果没有则新建一个 String 对象，返回对象引用，并将新创建的对象放入常量池。但是通过 new 的方式创建的 String 对象是不会去搜索常量池的，而是直接在堆区或栈区创建一个新的对象，也不会把对象放入常量池中。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String str1 = <span class="string">"123"</span>; <span class="comment">//通过直接量赋值方式，放入字符串常量池</span></span><br><span class="line">String str2 = <span class="keyword">new</span> String(“<span class="number">123</span>”);<span class="comment">//通过new方式赋值方式，不放入字符串常量池</span></span><br></pre></td></tr></table></figure><p>String 在 Java 6 以后还提供了 intern() 方法，目的是提示 JVM 把相应字符串缓存起来，以备重复使用。在我们创建字符串对象并调用 intern() 方法时，如果已经有缓存的字符串，就会返回缓存中的实例，否则将其缓存起来。</p><p>.</p><p><strong>3.应用场景</strong></p><p>在字符串内容不经常发生变化的场景优先使用 String 类。如：常量声明、少量的字符串拼接操作等。如果有大量字符串拼接操作，应避免使用 String 与 String 之间的 ”+“ 操作。</p><p>在频繁进行字符串拼接、替换、删除等，并且运行在多线程环境下，建议使用 StringBuffer，例如 XML 解析、HTTP 参数解析与封装。</p><p>在频繁进行字符串拼接、替换、删除等，并且运行在单线程环境下，建议使用 StringBuilder，例如 SQL 语句拼接、JSON 封装等。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;String、StringBuffer、StringBuilder-有什么区别&quot;&gt;&lt;a href=&quot;#String、StringBuffer、StringBuilder-有什么区别&quot; class=&quot;headerlink&quot; title=&quot;String、StringB
-      
-    
-    </summary>
-    
-      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
-    
     
   </entry>
   
