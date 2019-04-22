@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="二分查找,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -88,18 +88,17 @@
 
 
 
-<meta name="description" content="35. Search Insert PositionGiven a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no d">
-<meta name="keywords" content="二分查找">
+<meta name="description" content="设计模式浅谈基本知识设计模式可以分为创建型模式、结构型模式和行为型模式。  创建型模式是对对象创建过程的各种问题和解决方案的总结，包括工厂模式、单例模式等 结构型模式是针对软件设计结构的总结，关注于类、对象的继承、组合方式的实践经验，包括适配器模式、桥梁模式、装饰者模式、代理模式、享元模式等 行为型模式是从类或对象之间交互、职责划分等角度总结的模式，包括策略模式、命令模式、观察者模式、迭代器模式、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 35 Search Insert Position">
-<meta property="og:url" content="https://roychengc.github.io/2019/04/08/leetcode-35-Search-Insert-Position/index.html">
+<meta property="og:title" content="Java笔记: 设计模式浅谈">
+<meta property="og:url" content="https://roychengc.github.io/2019/04/22/Java笔记-设计模式浅谈/index.html">
 <meta property="og:site_name" content="Roy Cheng 的博客">
-<meta property="og:description" content="35. Search Insert PositionGiven a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no d">
+<meta property="og:description" content="设计模式浅谈基本知识设计模式可以分为创建型模式、结构型模式和行为型模式。  创建型模式是对对象创建过程的各种问题和解决方案的总结，包括工厂模式、单例模式等 结构型模式是针对软件设计结构的总结，关注于类、对象的继承、组合方式的实践经验，包括适配器模式、桥梁模式、装饰者模式、代理模式、享元模式等 行为型模式是从类或对象之间交互、职责划分等角度总结的模式，包括策略模式、命令模式、观察者模式、迭代器模式、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-08T14:12:56.412Z">
+<meta property="og:updated_time" content="2019-04-22T15:31:12.446Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 35 Search Insert Position">
-<meta name="twitter:description" content="35. Search Insert PositionGiven a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. You may assume no d">
+<meta name="twitter:title" content="Java笔记: 设计模式浅谈">
+<meta name="twitter:description" content="设计模式浅谈基本知识设计模式可以分为创建型模式、结构型模式和行为型模式。  创建型模式是对对象创建过程的各种问题和解决方案的总结，包括工厂模式、单例模式等 结构型模式是针对软件设计结构的总结，关注于类、对象的继承、组合方式的实践经验，包括适配器模式、桥梁模式、装饰者模式、代理模式、享元模式等 行为型模式是从类或对象之间交互、职责划分等角度总结的模式，包括策略模式、命令模式、观察者模式、迭代器模式、">
 
 
 
@@ -129,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="https://roychengc.github.io/2019/04/08/leetcode-35-Search-Insert-Position/">
+  <link rel="canonical" href="https://roychengc.github.io/2019/04/22/Java笔记-设计模式浅谈/">
 
 
 
 
 
-  <title>leetcode 35 Search Insert Position | Roy Cheng 的博客</title>
+  <title>Java笔记: 设计模式浅谈 | Roy Cheng 的博客</title>
   
 
 
@@ -306,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/04/08/leetcode-35-Search-Insert-Position/">
+    <link itemprop="mainEntityOfPage" href="https://roychengc.github.io/2019/04/22/Java笔记-设计模式浅谈/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Roy Cheng">
@@ -323,7 +322,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">leetcode 35 Search Insert Position</h1>
+          <h1 class="post-title" itemprop="name headline">Java笔记: 设计模式浅谈</h1>
         
 
         <div class="post-meta">
@@ -335,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-08T22:06:59+08:00">
-                2019-04-08
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T23:08:25+08:00">
+                2019-04-22
               </time>
             
 
@@ -358,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
+                  <a href="/categories/Java笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">Java笔记</span>
                   </a>
                 </span>
 
@@ -375,7 +374,7 @@
 
           
           
-             <span id="/2019/04/08/leetcode-35-Search-Insert-Position/" class="leancloud_visitors" data-flag-title="leetcode 35 Search Insert Position">
+             <span id="/2019/04/22/Java笔记-设计模式浅谈/" class="leancloud_visitors" data-flag-title="Java笔记: 设计模式浅谈">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -400,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  269
+                  661
                 </span>
               
 
@@ -416,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -437,20 +436,35 @@
       
 
       
-        <h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="35. Search Insert Position"></a><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a></h4><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p>
-<p>You may assume no duplicates in the array.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 5</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 2</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 7</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-<p><strong>Example 4:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure>
-<p>给定一个排好序的数组和一个目标值，如果目标值在数组中出现了，返回目标值在数组中的下标，否则返回目标值插入数组后的下标。</p>
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>可以直接遍历一遍数组，若当前数字大于或等于目标值，则返回当前坐标，如果遍历结束了，说明目标值比数组中任何一个数都要大，则返回数组长度n即可。</p>
-<p>我们还可以使用二分查找法优化时间复杂度。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length;</span><br><span class="line">        <span class="keyword">while</span> (high &gt; low) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) high = mid;</span><br><span class="line">            <span class="keyword">else</span> low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="设计模式浅谈"><a href="#设计模式浅谈" class="headerlink" title="设计模式浅谈"></a>设计模式浅谈</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>设计模式可以分为创建型模式、结构型模式和行为型模式。</p>
+<ul>
+<li>创建型模式是对对象创建过程的各种问题和解决方案的总结，包括工厂模式、单例模式等</li>
+<li>结构型模式是针对软件设计结构的总结，关注于类、对象的继承、组合方式的实践经验，包括适配器模式、桥梁模式、装饰者模式、代理模式、享元模式等</li>
+<li>行为型模式是从类或对象之间交互、职责划分等角度总结的模式，包括策略模式、命令模式、观察者模式、迭代器模式、访问者模式等</li>
+</ul>
+<p>.</p>
+<h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.单例模式</strong></p>
+<p>我们先来看看比较熟悉的单例模式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> instance;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>我们知道，Java 会自动为没有明确声明构造函数的类定义一个 public 的无参数的构造函数，所以上面的例子并不能保证额外的对象不被创建出来，我们完全可以使用 new Singleton() 的方法创建一个对象。</p>
+<p>如何解决这个问题呢？我们可以为单例定义一个 private 的构造函数。下面是修改过的版本。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>这个实现在单线程环境没有问题，但在并发场景，就需要考虑线程安全，最熟悉的就是“双检锁”，其要点在于：</p>
+<ul>
+<li>这里的 volatile 能够提供可见性，以及保证 getInstance 返回的是初始化完全的对象</li>
+<li>在同步之前进行 null 检查，以尽量避免进入相对昂贵的同步块</li>
+<li>直接在 class 级别进行同步，保证线程安全的类方法调用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton singleton = <span class="keyword">null</span>;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123; <span class="comment">// 尽量避免重复进入同步块</span></span><br><span class="line">        	<span class="keyword">synchronized</span> (Singleton.class) &#123; <span class="comment">// 同步.class，意味着对同步类方法调用</span></span><br><span class="line">            	<span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">                	singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">            	&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> singleton;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2. Spring 如何在 API 设计中使用设计模式</strong></p>
+<p>例子：</p>
+<ul>
+<li>BeanFactory 和 ApplicationContext 应用了工厂模式</li>
+<li>在 Bean 的创建中，Spring 也为不同 scope 定义的对象，提供了单例和原型的模式实现</li>
+<li>AOP 则是使用了代理模式、装饰器模式、适配器模式等</li>
+<li>各种事件监听器是观察者模式的典型应用</li>
+<li>类似 JdbcTemplate 等则是应用了模板模式</li>
+</ul>
 
       
     </div>
@@ -466,12 +480,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/二分查找/" rel="tag"># 二分查找</a>
-          
-        </div>
-      
 
       
       
@@ -481,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/08/leetcode-167-Two-Sum-II-Input-array-is-sorted/" rel="next" title="leetcode 167 Two Sum II - Input array is sorted">
-                <i class="fa fa-chevron-left"></i> leetcode 167 Two Sum II - Input array is sorted
+              <a href="/2019/04/21/leetcode-48-Rotate-Image/" rel="next" title="leetcode 48 Rotate Image">
+                <i class="fa fa-chevron-left"></i> leetcode 48 Rotate Image
               </a>
             
           </div>
@@ -490,10 +498,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/08/leetcode-38-Count-and-Say/" rel="prev" title="leetcode 38 Count and Say">
-                leetcode 38 Count and Say <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -650,7 +654,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#35-Search-Insert-Position"><span class="nav-number">1.</span> <span class="nav-text">35. Search Insert Position</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设计模式浅谈"><span class="nav-number">1.</span> <span class="nav-text">设计模式浅谈</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本知识"><span class="nav-number">1.1.</span> <span class="nav-text">基本知识</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#知识扩展"><span class="nav-number">1.2.</span> <span class="nav-text">知识扩展</span></a></li></ol></li></ol></div>
             
 
           </div>

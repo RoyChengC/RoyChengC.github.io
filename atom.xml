@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://roychengc.github.io/"/>
-  <updated>2019-04-21T15:55:33.798Z</updated>
+  <updated>2019-04-22T15:31:12.446Z</updated>
   <id>https://roychengc.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java笔记: 设计模式浅谈</title>
+    <link href="https://roychengc.github.io/2019/04/22/Java%E7%AC%94%E8%AE%B0-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%B5%85%E8%B0%88/"/>
+    <id>https://roychengc.github.io/2019/04/22/Java笔记-设计模式浅谈/</id>
+    <published>2019-04-22T15:08:25.000Z</published>
+    <updated>2019-04-22T15:31:12.446Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="设计模式浅谈"><a href="#设计模式浅谈" class="headerlink" title="设计模式浅谈"></a>设计模式浅谈</h3><h4 id="基本知识"><a href="#基本知识" class="headerlink" title="基本知识"></a>基本知识</h4><p>设计模式可以分为创建型模式、结构型模式和行为型模式。</p><ul><li>创建型模式是对对象创建过程的各种问题和解决方案的总结，包括工厂模式、单例模式等</li><li>结构型模式是针对软件设计结构的总结，关注于类、对象的继承、组合方式的实践经验，包括适配器模式、桥梁模式、装饰者模式、代理模式、享元模式等</li><li>行为型模式是从类或对象之间交互、职责划分等角度总结的模式，包括策略模式、命令模式、观察者模式、迭代器模式、访问者模式等</li></ul><p>.</p><h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>1.单例模式</strong></p><p>我们先来看看比较熟悉的单例模式。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> instance;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure><p>我们知道，Java 会自动为没有明确声明构造函数的类定义一个 public 的无参数的构造函数，所以上面的例子并不能保证额外的对象不被创建出来，我们完全可以使用 new Singleton() 的方法创建一个对象。</p><p>如何解决这个问题呢？我们可以为单例定义一个 private 的构造函数。下面是修改过的版本。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (instance == <span class="keyword">null</span>) &#123;</span><br><span class="line">            instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p>这个实现在单线程环境没有问题，但在并发场景，就需要考虑线程安全，最熟悉的就是“双检锁”，其要点在于：</p><ul><li>这里的 volatile 能够提供可见性，以及保证 getInstance 返回的是初始化完全的对象</li><li>在同步之前进行 null 检查，以尽量避免进入相对昂贵的同步块</li><li>直接在 class 级别进行同步，保证线程安全的类方法调用</li></ul><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton singleton = <span class="keyword">null</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123; <span class="comment">// 尽量避免重复进入同步块</span></span><br><span class="line">        <span class="keyword">synchronized</span> (Singleton.class) &#123; <span class="comment">// 同步.class，意味着对同步类方法调用</span></span><br><span class="line">            <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">                singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> singleton;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><strong>2. Spring 如何在 API 设计中使用设计模式</strong></p><p>例子：</p><ul><li>BeanFactory 和 ApplicationContext 应用了工厂模式</li><li>在 Bean 的创建中，Spring 也为不同 scope 定义的对象，提供了单例和原型的模式实现</li><li>AOP 则是使用了代理模式、装饰器模式、适配器模式等</li><li>各种事件监听器是观察者模式的典型应用</li><li>类似 JdbcTemplate 等则是应用了模板模式</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;设计模式浅谈&quot;&gt;&lt;a href=&quot;#设计模式浅谈&quot; class=&quot;headerlink&quot; title=&quot;设计模式浅谈&quot;&gt;&lt;/a&gt;设计模式浅谈&lt;/h3&gt;&lt;h4 id=&quot;基本知识&quot;&gt;&lt;a href=&quot;#基本知识&quot; class=&quot;headerlink&quot; title=&quot;基
+      
+    
+    </summary>
+    
+      <category term="Java笔记" scheme="https://roychengc.github.io/categories/Java%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>leetcode 48 Rotate Image</title>
@@ -482,31 +505,6 @@
     
     
       <category term="递归" scheme="https://roychengc.github.io/tags/%E9%80%92%E5%BD%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>leetcode 35 Search Insert Position</title>
-    <link href="https://roychengc.github.io/2019/04/08/leetcode-35-Search-Insert-Position/"/>
-    <id>https://roychengc.github.io/2019/04/08/leetcode-35-Search-Insert-Position/</id>
-    <published>2019-04-08T14:06:59.000Z</published>
-    <updated>2019-04-08T14:12:56.412Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="35. Search Insert Position"></a><a href="https://leetcode-cn.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a></h4><p>Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.</p><p>You may assume no duplicates in the array.</p><p><strong>Example 1:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 5</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure><p><strong>Example 2:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 2</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure><p><strong>Example 3:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 7</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure><p><strong>Example 4:</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: [1,3,5,6], 0</span><br><span class="line">Output: 0</span><br></pre></td></tr></table></figure><p>给定一个排好序的数组和一个目标值，如果目标值在数组中出现了，返回目标值在数组中的下标，否则返回目标值插入数组后的下标。</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>可以直接遍历一遍数组，若当前数字大于或等于目标值，则返回当前坐标，如果遍历结束了，说明目标值比数组中任何一个数都要大，则返回数组长度n即可。</p><p>我们还可以使用二分查找法优化时间复杂度。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">searchInsert</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> low = <span class="number">0</span>, high = nums.length;</span><br><span class="line">        <span class="keyword">while</span> (high &gt; low) &#123;</span><br><span class="line">            <span class="keyword">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) <span class="keyword">return</span> mid;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) high = mid;</span><br><span class="line">            <span class="keyword">else</span> low = mid + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> low;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;35-Search-Insert-Position&quot;&gt;&lt;a href=&quot;#35-Search-Insert-Position&quot; class=&quot;headerlink&quot; title=&quot;35. Search Insert Position&quot;&gt;&lt;/a&gt;&lt;a href=&quot;h
-      
-    
-    </summary>
-    
-      <category term="leetcode" scheme="https://roychengc.github.io/categories/leetcode/"/>
-    
-    
-      <category term="二分查找" scheme="https://roychengc.github.io/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/"/>
     
   </entry>
   
